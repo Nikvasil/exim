@@ -8,15 +8,18 @@ const generateToken = (id) => {
 
 
 const registerUser = async (req, res) => {
-    const { username, password } = req.body;
+    console.log(req.body);
+    const { username, email, password } = req.body;
     const userExists = await User.findOne({ username });
+    console.log(username);
 
     if (userExists) {
         res.status(400).json({ message: 'User already exists' });
         return;
     }
 
-    const user = new User({ username, password });
+    const user = new User({ username, email, password });
+    console.log(user);
 
     try {
         await user.save();
@@ -32,8 +35,8 @@ const registerUser = async (req, res) => {
 
 
 const authUser = async (req, res) => {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
+    const { username, email,  password } = req.body;
+    const user = await User.findOne({ email });
 
     if (user && (await user.matchPassword(password))) {
         res.json({
