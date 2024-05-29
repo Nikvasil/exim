@@ -55,7 +55,7 @@ const updateData = async () => {
 };
 
 
-cron.schedule('*/1 * * * *', () => {
+cron.schedule('*/10 * * * *', () => {
     console.log('Running the update data script...');
     updateData();
 });

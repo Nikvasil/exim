@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cron = require('node-cron');
+const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const kindergartenRoutes = require('./routes/kindergartenRoutes');
 const schoolRoutes = require('./routes/schoolRoutes');
@@ -25,6 +26,12 @@ mongoose.connect(process.env.MONGO_URI)
 app.use(express.json());
 
 
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+}));
+
+
 app.use('/api/users', userRoutes);
 app.use('/api/kindergartens', kindergartenRoutes);
 app.use('/api/schools', schoolRoutes);
@@ -32,7 +39,7 @@ app.use('/api/social-child-projects', socialChildProjectRoutes);
 app.use('/api/social-teenager-projects', socialTeenagerProjectRoutes);
 
 
-cron.schedule('*/1 * * * *', () => {
+cron.schedule('*/10 * * * *', () => {
     updateData();
 });
 
