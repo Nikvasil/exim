@@ -27,7 +27,7 @@ const Header = ({ user, onLogout }) => {
                     </div>
                 ) : (
                     <div className="header-account">
-                            <Avatar sx={{ bgcolor: "dimgray" }} onClick={handleLogout}>t</Avatar>
+                            <Avatar sx={{ bgcolor: "dimgray" }} variant="rounded" onClick={handleLogout}>{user.username[0]}</Avatar>
                     </div>
                 )}
             </div>
