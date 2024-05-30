@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import logo from '../assets/eximLogo.png';
+import Avatar from '@mui/material/Avatar';
 
 
 const Header = ({ user, onLogout }) => {
@@ -14,17 +16,19 @@ const Header = ({ user, onLogout }) => {
         <header>
             <div className="header-left">
                 <Link to="/">
-                    <p> exim </p>
+                    <img src={logo} alt="Exim Logo" className="header-logo"/>
                 </Link>
             </div>
             <div className="header-right">
                 {!user ? (
-                    <>
-                        <Link to="/register">Sign Up</Link>
-                        <Link to="/login">Sign In</Link>
-                    </>
+                    <div className="header-links">
+                        <Link to="/register" className="button contained">SIGN UP</Link>
+                        <Link to="/login" className="button outlined">SIGN IN</Link>
+                    </div>
                 ) : (
-                    <button onClick={handleLogout}>Logout</button>
+                    <div className="header-account">
+                            <Avatar sx={{ bgcolor: "dimgray" }} onClick={handleLogout}>t</Avatar>
+                    </div>
                 )}
             </div>
         </header>

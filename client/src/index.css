@@ -27,23 +27,38 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
-button:hover {
-  border-color: #646cff;
+
+.contained {
+  background-color: #fff;
+  color: #333;
+  border: 2px solid #fff;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+.contained:hover {
+  background-color: #333333;
+  border-color: #f0f0f0;
+  color: #ffffff;
+}
+
+.outlined {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.outlined:hover {
+  background-color: #fff;
+  color: #333;
+  border-color: #fff;
 }
 
 @media (prefers-color-scheme: light) {
@@ -60,16 +75,23 @@ button:focus-visible {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
-  padding: 0;
+}
+
+header {
+  color: #fff;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: solid 1px #333333;
 }
 
 header, footer {
-  background-color: #333;
   color: #fff;
   padding: 10px;
-  text-align: center;
 }
 
 header .header-left, header .header-right {
@@ -80,17 +102,73 @@ header .header-right {
   float: right;
 }
 
+.header-links {
+  display: flex;
+  gap: 16px;
+  padding-top: 10px;
+}
+
+.header-account {
+  padding: 14px;
+  text-align: center;
+  vertical-align: center;
+}
+
+.header-account:hover {
+  cursor: pointer;
+}
+
 header a, footer p {
   color: #fff;
   text-decoration: none;
 }
 
-.logo {
-  height: 40px;
+.header-logo {
+  height: 60px;
+  width: 180px;
+}
+
+footer {
+  color: #fff;
+  position: absolute;
+  padding: 20px 0;
+  bottom: -185px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  border-top: solid 1px #333333;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.footer-column {
+  text-align: left;
+  flex: 1;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-icon {
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 main {
   padding: 20px;
+  flex: 1;
 }
 
 form {
@@ -112,4 +190,6 @@ form button {
   border: none;
   cursor: pointer;
 }
+
+
 

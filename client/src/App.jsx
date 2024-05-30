@@ -20,12 +20,14 @@ function App() {
             <div className="App">
                 <Header user={user} onLogout={handleLogout} />
                 <main>
+                    <div className="content">
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/login" element={<Login setUser={setUser} />} />
                         <Route path="/account" element={user ? <Account user={user} /> : <Navigate to="/login" />} />
                     </Routes>
+                    </div>
                 </main>
                 <Footer />
             </div>
