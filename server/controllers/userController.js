@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const asyncHandler = require('express-async-handler');
 
 
 const generateToken = (id) => {
@@ -8,10 +9,8 @@ const generateToken = (id) => {
 
 
 const registerUser = async (req, res) => {
-    console.log(req.body);
     const { username, email, password } = req.body;
     const userExists = await User.findOne({ username });
-    console.log(username);
 
     if (userExists) {
         res.status(400).json({ message: 'User already exists' });
@@ -34,20 +33,23 @@ const registerUser = async (req, res) => {
 };
 
 
-const authUser = async (req, res) => {
-    const { username, email,  password } = req.body;
-    const user = await User.findOne({ email });
+const authUser = asyncHandler(async (req, res) => {
+    const { identifier, password } = req.body;
+
+    const user = await User.findOne({ $or: [{ email: identifier }, { username: identifier }] });
 
     if (user && (await user.matchPassword(password))) {
         res.json({
             _id: user._id,
             username: user.username,
+            email: user.email,
             token: generateToken(user._id),
         });
     } else {
-        res.status(401).json({ message: 'Invalid username or password' });
+        res.status(401);
+        throw new Error('Invalid email/username or password');
     }
-};
+});
 
 
 const updateUser = async (req, res) => {
@@ -76,4 +78,8 @@ const updateUser = async (req, res) => {
 };
 
 
-module.exports = { registerUser, authUser, updateUser };
+module.exports = {
+    registerUser,
+    authUser,
+    updateUser,
+};

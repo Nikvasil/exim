@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const Login = ({ setUser }) => {
     const [formData, setFormData] = useState({
-        email: '',
+        identifier: '',
         password: '',
     });
 
@@ -34,8 +35,20 @@ const Login = ({ setUser }) => {
         <div>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-                <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
+                <input
+                    type="text"
+                    name="identifier"
+                    placeholder="Email or Username"
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    onChange={handleChange}
+                    required
+                />
                 <button type="submit">Login</button>
             </form>
         </div>
@@ -44,4 +57,5 @@ const Login = ({ setUser }) => {
 
 
 export default Login;
+
 
