@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../assets/eximLogo.png';
 import Avatar from '@mui/material/Avatar';
 
 
@@ -16,8 +15,8 @@ const Header = ({ user, onLogout }) => {
         <header>
             <div className="header-container">
             <div className="header-left">
-                <Link to="/">
-                    <img src={logo} alt="Exim Logo" className="header-logo"/>
+                <Link to="/" className="logo">
+                    exim
                 </Link>
             </div>
             <div className="header-right">

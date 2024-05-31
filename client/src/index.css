@@ -102,9 +102,15 @@ header {
   width: 100%;
 }
 
-.header-logo {
-  height: 50px;
-  width: 150px;
+.logo {
+  font-family: "Linux Libertine G", serif;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.logo:hover {
+  text-decoration: underline;
+  color: white;
 }
 
 .header-links {
@@ -222,6 +228,7 @@ h1 {
   color: red;
   text-align: center;
 }
+
 
 
 
