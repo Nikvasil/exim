@@ -14,6 +14,7 @@ const Header = ({ user, onLogout }) => {
 
     return (
         <header>
+            <div className="header-container">
             <div className="header-left">
                 <Link to="/">
                     <img src={logo} alt="Exim Logo" className="header-logo"/>
@@ -22,14 +23,15 @@ const Header = ({ user, onLogout }) => {
             <div className="header-right">
                 {!user ? (
                     <div className="header-links">
-                        <Link to="/register" className="button contained">SIGN UP</Link>
-                        <Link to="/login" className="button outlined">SIGN IN</Link>
+                        <Link to="/register" className="button contained">Sign Up</Link>
+                        <Link to="/login" className="button outlined">Log In</Link>
                     </div>
                 ) : (
                     <div className="header-account">
                             <Avatar sx={{ bgcolor: "dimgray" }} variant="rounded" onClick={handleLogout}>{user.username[0]}</Avatar>
                     </div>
                 )}
+            </div>
             </div>
         </header>
     );

@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const Login = ({ setUser }) => {
     const [formData, setFormData] = useState({
         identifier: '',
         password: '',
     });
 
+    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -18,6 +17,7 @@ const Login = ({ setUser }) => {
             ...formData,
             [name]: value,
         });
+        setError(''); // Clear error message when user types
     };
 
     const handleSubmit = async (e) => {
@@ -27,35 +27,39 @@ const Login = ({ setUser }) => {
             setUser(response.data);
             navigate('/');
         } catch (error) {
+            setError('User does not exist or invalid credentials.');
             console.error('Login Error:', error);
         }
     };
 
     return (
-        <div>
-            <h1>Login</h1>
+        <div className="content">
             <form onSubmit={handleSubmit}>
+                <h1>Log In to Exim</h1>
+                <label htmlFor="identifier">Email or Username</label>
                 <input
                     type="text"
                     name="identifier"
-                    placeholder="Email or Username"
+                    id="identifier"
                     onChange={handleChange}
                     required
                 />
+                <label htmlFor="password">Password</label>
                 <input
                     type="password"
                     name="password"
-                    placeholder="Password"
+                    id="password"
                     onChange={handleChange}
                     required
                 />
-                <button type="submit">Login</button>
+                {error && <p className="error-message">{error}</p>}
+                <button type="submit">Log In</button>
             </form>
         </div>
     );
 };
 
-
 export default Login;
+
 
 
