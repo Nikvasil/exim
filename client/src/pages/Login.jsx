@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+
 
 const Login = ({ setUser }) => {
     const [formData, setFormData] = useState({
@@ -8,6 +11,7 @@ const Login = ({ setUser }) => {
         password: '',
     });
 
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -32,6 +36,10 @@ const Login = ({ setUser }) => {
         }
     };
 
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
     return (
         <div className="content">
             <form onSubmit={handleSubmit}>
@@ -45,15 +53,29 @@ const Login = ({ setUser }) => {
                     required
                 />
                 <label htmlFor="password">Password</label>
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    onChange={handleChange}
-                    required
-                />
+                <div className="password-input-container">
+                    <input
+                        type={showPassword ? 'text' : 'password'}
+                        name="password"
+                        id="password"
+                        onChange={handleChange}
+                        required
+                    />
+                    {showPassword ? (
+                        <VisibilityOffOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility}/>
+                    ) : (
+                        <VisibilityOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility}/>
+                    )}
+                </div>
                 {error && <p className="error-message">{error}</p>}
                 <button type="submit">Log In</button>
+                <div
+                    className="login-signup"> Or <Link
+                    to="/register"
+                    className="login-signup-link">
+                    Sign Up
+                </Link> if you are not a member yet.
+                </div>
             </form>
         </div>
     );

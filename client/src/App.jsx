@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import Account from './pages/Account';
+import ChangePassword from './pages/ChangePassword.jsx';
 
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/login" element={<Login setUser={setUser} />} />
-                        <Route path="/account" element={user ? <Account user={user} /> : <Navigate to="/login" />} />
+                        <Route path="/change-password" element={user ? <ChangePassword user={user} /> : <Navigate to="/login" />} />
                     </Routes>
                     </div>
                 </main>

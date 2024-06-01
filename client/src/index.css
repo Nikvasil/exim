@@ -120,12 +120,18 @@ header {
 }
 
 .header-account {
-  padding: 2px;
+  padding: 3px;
   text-align: center;
   vertical-align: middle;
 }
 
-.header-account:hover, .password-icon:hover {
+.header-account:hover {
+  cursor: pointer;
+  background-color: #333333;
+  border-radius: 5px;
+}
+
+.password-icon:hover {
   cursor: pointer;
   background-color: #3D3D3D;
   border-radius: 12px;
@@ -185,6 +191,8 @@ form input {
   margin: 12px 0;
   padding: 10px;
   font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 form button {
@@ -227,6 +235,51 @@ h1 {
 .error-message {
   color: red;
   text-align: center;
+}
+
+.login-signup {
+  text-align: center;
+  margin: 12px 0;
+}
+
+.login-signup-link {
+  color: white;
+  font-weight: bold;
+}
+
+.login-signup-link:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.menuDivider {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1px;
+  background-color: #242424;
+  width: 80%;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.visibility-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.password-input-container input {
+  width: 100%;
+  padding-right: 30px;
+}
+
+.password-input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 

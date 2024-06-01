@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
+const bcrypt = require('bcryptjs');
 
 
 const generateToken = (id) => {
@@ -18,7 +19,6 @@ const registerUser = async (req, res) => {
     }
 
     const user = new User({ username, email, password });
-    console.log(user);
 
     try {
         await user.save();
@@ -52,34 +52,23 @@ const authUser = asyncHandler(async (req, res) => {
 });
 
 
-const updateUser = async (req, res) => {
-    const user = await User.findById(req.user._id);
+const changePassword = asyncHandler(async (req, res) => {
+    const { userId, currentPassword, newPassword } = req.body;
 
-    if (user) {
-        user.username = req.body.username || user.username;
-        user.favoriteFacility = req.body.favoriteFacility || user.favoriteFacility;
-        user.homeAddress = req.body.homeAddress || user.homeAddress;
+    const user = await User.findById(userId);
 
-        if (req.body.password) {
-            user.password = req.body.password;
-        }
-
-        const updatedUser = await user.save();
-        res.json({
-            _id: updatedUser._id,
-            username: updatedUser.username,
-            favoriteFacility: updatedUser.favoriteFacility,
-            homeAddress: updatedUser.homeAddress,
-            token: generateToken(updatedUser._id),
-        });
+    if (user && (await bcrypt.compare(currentPassword, user.password))) {
+        user.password = newPassword;
+        await user.save();
+        res.status(200).json({ success: true, message: 'Password changed successfully' });
     } else {
-        res.status(404).json({ message: 'User not found' });
+        res.status(400).json({ success: false, message: 'Invalid current password' });
     }
-};
+});
 
 
 module.exports = {
     registerUser,
     authUser,
-    updateUser,
+    changePassword
 };

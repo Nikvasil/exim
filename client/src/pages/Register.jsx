@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import Tooltip from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
+import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -12,6 +14,7 @@ const Register = () => {
         password: '',
     });
 
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -43,7 +46,7 @@ const Register = () => {
         }
 
         if (!validatePassword(formData.password)) {
-            setError('Your password does not meet the requirements..');
+            setError('Your password does not meet the requirements.');
             return;
         }
 
@@ -73,10 +76,15 @@ const Register = () => {
         border-radius: 4px;
     }`;
 
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
     return (
         <div className="content">
             <form onSubmit={handleSubmit}>
                 <h1>Get Started</h1>
+                {error && <p className="error-message">{error}</p>}
                 <label htmlFor="username">Username</label>
                 <input
                     type="text"
@@ -95,18 +103,29 @@ const Register = () => {
                 />
                 <div className="register-password-container">
                     <label htmlFor="password">Password</label>
-                    <StyledTooltip arrow title="Make sure your password is at least 8 characters long and contains an uppercase letter, a lowercase letter, a special character, and a number.">
-                        <HelpOutlineIcon fontSize="small" className="password-icon" />
+                    <StyledTooltip
+                        arrow placement="right-start"
+                        title="Make sure your password is at least 8 characters long and contains an uppercase letter,
+                        a lowercase letter, a special character, and a number.">
+                        <HelpOutlineIcon
+                            fontSize="small"
+                            className="password-icon" />
                     </StyledTooltip>
                 </div>
-                <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    onChange={handleChange}
-                    required
-                />
-                {error && <p className="error-message">{error}</p>}
+                <div className="password-input-container">
+                    <input
+                        type={showPassword ? 'text' : 'password'}
+                        name="password"
+                        id="password"
+                        onChange={handleChange}
+                        required
+                    />
+                    {showPassword ? (
+                        <VisibilityOffOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility} />
+                    ) : (
+                        <VisibilityOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility} />
+                    )}
+                </div>
                 <button type="submit">Sign Up</button>
             </form>
         </div>
@@ -114,5 +133,7 @@ const Register = () => {
 };
 
 export default Register;
+
+
 
 

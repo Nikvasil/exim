@@ -8,13 +8,17 @@ const Footer = () => {
         <footer>
             <div className="footer-container">
                 <div className="footer-column">
-                    <h3>Contact info</h3>
+                    <h3>Contact Info</h3>
                     <p>
-                        <PlaceIcon fontSize="small" className="footer-icon"/>
+                        <PlaceIcon
+                            fontSize="small"
+                            className="footer-icon"/>
                         Str. der Nationen 62, 09111 Chemnitz
                     </p>
                     <p>
-                        <EmailOutlinedIcon fontSize="small" className="footer-icon"/>
+                        <EmailOutlinedIcon
+                            fontSize="small"
+                            className="footer-icon"/>
                         mykyta.vasyliev@s2022.tu-chemnitz.de
                     </p>
                 </div>
