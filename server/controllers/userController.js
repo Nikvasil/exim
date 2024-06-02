@@ -18,13 +18,18 @@ const registerUser = async (req, res) => {
         return;
     }
 
-    const user = new User({ username, email, password });
+    const user = new User({
+        username,
+        email,
+        password
+    });
 
     try {
         await user.save();
         res.status(201).json({
             _id: user._id,
             username: user.username,
+            email: user.email,
             token: generateToken(user._id),
         });
     } catch (error) {
@@ -66,9 +71,28 @@ const changePassword = asyncHandler(async (req, res) => {
     }
 });
 
+const updateHomeAddress = asyncHandler(async (req, res) => {
+    const { userId, homeAddress } = req.body;
+
+    const user = await User.findById(userId);
+
+    if (user) {
+        user.homeAddress = homeAddress;
+        await user.save();
+        res.status(200).json({
+            success: true,
+            homeAddress: user.homeAddress,
+        });
+    } else {
+        res.status(404);
+        throw new Error('User not found');
+    }
+});
+
 
 module.exports = {
     registerUser,
     authUser,
-    changePassword
+    changePassword,
+    updateHomeAddress
 };

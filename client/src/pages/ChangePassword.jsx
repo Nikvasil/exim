@@ -6,6 +6,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined.js";
 
 
 const ChangePassword = ({ user }) => {
@@ -47,7 +48,7 @@ const ChangePassword = ({ user }) => {
                 newPassword: formData.newPassword,
             });
             if (response.data.success) {
-                navigate('/');
+                navigate('/?passwordChanged=true');
             } else {
                 setError(response.data.message || 'Password change failed. Please try again.');
             }
@@ -113,7 +114,10 @@ const ChangePassword = ({ user }) => {
                         <VisibilityOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility}/>
                     )}
                 </div>
-                {error && <p className="error-message">{error}</p>}
+                {error && <p className="error-message"><ErrorOutlineOutlinedIcon
+                    fontSize="small"
+                    className="error-outline-outlined-icon"
+                ></ErrorOutlineOutlinedIcon>{error}</p>}
                 <button type="submit">Change Password</button>
             </form>
         </div>

@@ -6,8 +6,9 @@ import Tooltip from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined.js";
 
-const Register = () => {
+const Register = ({ setUser }) => {
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -51,8 +52,9 @@ const Register = () => {
         }
 
         try {
-            await axios.post('/api/users/register', formData);
-            navigate('/login');
+            const response = await axios.post('/api/users/register', formData);
+            setUser(response.data);
+            navigate('/');
         } catch (error) {
             if (error.response && error.response.status === 400 && error.response.data.message === 'User already exists') {
                 setError('This user already exists.');
@@ -84,7 +86,6 @@ const Register = () => {
         <div className="content">
             <form onSubmit={handleSubmit}>
                 <h1>Get Started</h1>
-                {error && <p className="error-message">{error}</p>}
                 <label htmlFor="username">Username</label>
                 <input
                     type="text"
@@ -126,6 +127,10 @@ const Register = () => {
                         <VisibilityOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility} />
                     )}
                 </div>
+                {error && <p className="error-message"><ErrorOutlineOutlinedIcon
+                    fontSize="small"
+                    className="error-outline-outlined-icon"
+                ></ErrorOutlineOutlinedIcon>{error}</p>}
                 <button type="submit">Sign Up</button>
             </form>
         </div>

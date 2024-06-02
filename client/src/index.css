@@ -171,8 +171,9 @@ footer {
 }
 
 .footer-icon {
-  margin-right: 10px;
+  padding-right: 10px;
   vertical-align: middle;
+  padding-bottom: 2px;
 }
 
 main {
@@ -227,9 +228,19 @@ h1 {
   width: 100%;
 }
 
-.password-icon {
+.password-icon, .home-tooltip {
   vertical-align: middle;
   padding: 2px;
+}
+
+.home-tooltip {
+  margin-left: 8px;
+}
+
+.home-tooltip:hover {
+  cursor: pointer;
+  background-color: #3D3D3D;
+  border-radius: 12px;
 }
 
 .error-message {
@@ -252,17 +263,34 @@ h1 {
   text-decoration: underline;
 }
 
-.menuDivider {
-  flex: 1;
+.home-link {
+  color: white;
+  font-weight: bold;
+}
+
+.home-link:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.home-icon {
+  padding-right: 10px;
+  padding-bottom: 6px;
+  vertical-align: middle;
+}
+
+.error-outline-outlined-icon {
+  padding-right: 6px;
+  padding-bottom: 6px;
+  vertical-align: middle;
+}
+
+.home-address {
+  font-size: 18px;
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
-  height: 1px;
-  background-color: #242424;
-  width: 80%;
-  text-align: center;
-  margin-left: 10%;
-  margin-right: 10%;
 }
 
 .visibility-icon {
@@ -281,6 +309,72 @@ h1 {
   align-items: center;
   position: relative;
 }
+
+.remember-me {
+  margin: 12px 0;
+}
+
+.success-message {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.home-address-input {
+  margin: 0 8px;
+  padding: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.home-address-button {
+  padding: 6px;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  background-color: transparent;
+  border: 2px solid #fff;
+}
+
+.home-address-edit-button {
+  margin: 0 14px;
+  padding: 4px;
+  font-size: 1px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  background-color: transparent;
+  border: 2px solid #fff;
+}
+
+.home-address-edit-button:hover {
+  background-color: #fff;
+  color: #333;
+  border-color: #fff;
+}
+
+.home-address-button:hover {
+  background-color: #fff;
+  color: #333;
+  border-color: #fff;
+}
+
 
 
 

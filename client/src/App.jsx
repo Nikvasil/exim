@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -11,6 +11,13 @@ import ChangePassword from './pages/ChangePassword.jsx';
 function App() {
     const [user, setUser] = useState(null);
 
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
+    }, []);
+
     const handleLogout = () => {
         setUser(null);
     };
@@ -18,14 +25,25 @@ function App() {
     return (
         <Router>
             <div className="App">
-                <Header user={user} onLogout={handleLogout} />
+                <Header
+                    user={user}
+                    onLogout={handleLogout} />
                 <main>
                     <div className="content">
                     <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route path="/login" element={<Login setUser={setUser} />} />
-                        <Route path="/change-password" element={user ? <ChangePassword user={user} /> : <Navigate to="/login" />} />
+                        <Route
+                            path="/"
+                            element={<Home user={user} setUser={setUser} />} />
+                        <Route
+                            path="/register"
+                            element={<Register setUser={setUser} />} />
+                        <Route
+                            path="/login"
+                            element={<Login setUser={setUser} />} />
+                        <Route
+                            path="/change-password"
+                            element={user ? <ChangePassword user={user} /> :
+                                <Navigate to="/login" />} />
                     </Routes>
                     </div>
                 </main>

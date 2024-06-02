@@ -3,7 +3,9 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-
+import Checkbox from '@mui/material/Checkbox';
+import { grey } from '@mui/material/colors';
+import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 
 const Login = ({ setUser }) => {
     const [formData, setFormData] = useState({
@@ -12,6 +14,7 @@ const Login = ({ setUser }) => {
     });
 
     const [showPassword, setShowPassword] = useState(false);
+    const [rememberMe, setRememberMe] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -21,7 +24,11 @@ const Login = ({ setUser }) => {
             ...formData,
             [name]: value,
         });
-        setError(''); // Clear error message when user types
+        setError('');
+    };
+
+    const handleCheckboxChange = (e) => {
+        setRememberMe(e.target.checked);
     };
 
     const handleSubmit = async (e) => {
@@ -29,6 +36,9 @@ const Login = ({ setUser }) => {
         try {
             const response = await axios.post('/api/users/login', formData);
             setUser(response.data);
+            if (rememberMe) {
+                localStorage.setItem('user', JSON.stringify(response.data));
+            }
             navigate('/');
         } catch (error) {
             setError('User does not exist or invalid credentials.');
@@ -62,19 +72,32 @@ const Login = ({ setUser }) => {
                         required
                     />
                     {showPassword ? (
-                        <VisibilityOffOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility}/>
+                        <VisibilityOffOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility} />
                     ) : (
-                        <VisibilityOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility}/>
+                        <VisibilityOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility} />
                     )}
                 </div>
-                {error && <p className="error-message">{error}</p>}
+                <div className="remember-me">
+                    <Checkbox
+                        checked={rememberMe}
+                        onChange={handleCheckboxChange}
+                        sx={{
+                            color: grey[600],
+                            '&.Mui-checked': {
+                                color: grey[400],
+                            },
+                        }}
+                    />
+                    Remember me
+                </div>
+                {error && <p className="error-message"> <ErrorOutlineOutlinedIcon
+                    fontSize="small"
+                    className="error-outline-outlined-icon"
+                    ></ErrorOutlineOutlinedIcon>
+                    {error}</p>}
                 <button type="submit">Log In</button>
-                <div
-                    className="login-signup"> Or <Link
-                    to="/register"
-                    className="login-signup-link">
-                    Sign Up
-                </Link> if you are not a member yet.
+                <div className="login-signup">
+                    Or <Link to="/register" className="login-signup-link">Sign Up</Link> if you are not a member yet.
                 </div>
             </form>
         </div>
@@ -82,6 +105,7 @@ const Login = ({ setUser }) => {
 };
 
 export default Login;
+
 
 
 
