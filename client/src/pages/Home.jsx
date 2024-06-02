@@ -10,6 +10,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
 import axios from 'axios';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import Checkbox from '@mui/material/Checkbox';
 
 
 const Home = ({ user, setUser }) => {
@@ -65,8 +66,8 @@ const Home = ({ user, setUser }) => {
     }`;
 
     return (
-        <div className="home">
-            <div className="home-address">
+        <div className="home-container">
+            <div className="home-address-container">
                 {
                     !user ? (
                         <div>
@@ -104,7 +105,7 @@ const Home = ({ user, setUser }) => {
                                     >Add
                                     </button>
                                     <StyledTooltip
-                                        arrow placement="right-start"
+                                        arrow placement="right"
                                         title="Make sure you have entered a real existing address.">
                                         <HelpOutlineIcon
                                             fontSize="small"
@@ -147,6 +148,68 @@ const Home = ({ user, setUser }) => {
                     </Alert>
                 </div>
             )}
+            <div className="filter-container">
+                <div className="filter-checkbox-container">
+                    <Checkbox
+                        sx={{
+                            color: grey[600],
+                            '&.Mui-checked': {
+                                color: grey[400],
+                            },
+                        }}
+                    />
+                    Select All
+                </div>
+                <div className="filter-checkbox-container">
+                    <Checkbox
+                        sx={{
+                            color: grey[600],
+                            '&.Mui-checked': {
+                                color: grey[400],
+                            },
+                        }}
+                    />
+                    Schools
+                </div>
+                <div className="filter-checkbox-container">
+                    <Checkbox
+                        sx={{
+                            color: grey[600],
+                            '&.Mui-checked': {
+                                color: grey[400],
+                            },
+                        }}
+                    />
+                    Kindergarden
+                </div>
+                <div className="filter-checkbox-container">
+                    <Checkbox
+                        sx={{
+                            color: grey[600],
+                            '&.Mui-checked': {
+                                color: grey[400],
+                            },
+                        }}
+                    />
+                    Social Child Projects
+                </div>
+                <div className="filter-checkbox-container">
+                    <Checkbox
+                        sx={{
+                            color: grey[600],
+                            '&.Mui-checked': {
+                                color: grey[400],
+                            },
+                        }}
+                    />
+                    Social Teenager Projects
+                </div>
+            </div>
+            <div className="map-container">
+                <div className="map">
+
+                </div>
+            </div>
         </div>
     );
 };
