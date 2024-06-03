@@ -1,9 +1,10 @@
 header, .header-container, .header-links {
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 header, .header-container {
-    justify-content: space-around;
     width: 100%;
 }
 
@@ -14,14 +15,19 @@ header {
     z-index: 1000;
     background-color: #242424;
     padding: 0.5556vh 0; /* 6px */
+    transition: top 0.3s ease-in-out; /* Smooth transition for showing/hiding */
+}
+
+header.show {
+    top: 0;
+}
+
+header.hide {
+    top: -10vh; /* Adjust this value to hide the header completely */
 }
 
 header a {
     color: white;
-}
-
-.header-container {
-    align-items: center;
 }
 
 .header-button-outlined, .header-button-contained, .header-logo {
@@ -106,10 +112,15 @@ header a {
 
 @media (max-width: 768px) {
     .header-container {
-        flex-direction: column;
-        align-items: flex-start;
+        justify-content: space-between;
+        padding: 0 4vh;
+    }
+
+    .header-left, .header-right {
+        margin: 1.0185vh 0; /* 10px */
     }
 }
+
 
 
 

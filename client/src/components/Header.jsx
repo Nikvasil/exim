@@ -9,11 +9,12 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import '../styles/Header.css';
 
-
 const Header = ({ user, onLogout }) => {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
+    const [scrollUp, setScrollUp] = useState(true);
     const anchorRef = useRef(null);
+    const lastScrollY = useRef(0);
 
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
@@ -28,6 +29,7 @@ const Header = ({ user, onLogout }) => {
 
     const handleLogout = async () => {
         await setOpen(false);
+        localStorage.removeItem('user');
         onLogout();
         navigate('/');
     };
@@ -47,6 +49,7 @@ const Header = ({ user, onLogout }) => {
     };
 
     const prevOpen = useRef(open);
+
     useEffect(() => {
         if (prevOpen.current === true && open === false) {
             anchorRef.current.focus();
@@ -54,8 +57,25 @@ const Header = ({ user, onLogout }) => {
         prevOpen.current = open;
     }, [open]);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > lastScrollY.current) {
+                setScrollUp(false);
+            } else {
+                setScrollUp(true);
+            }
+            lastScrollY.current = window.scrollY;
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
-        <header>
+        <header className={scrollUp ? 'show' : 'hide'}>
             <div className="header-container">
                 <div className="header-left">
                     <Link to="/" className="header-logo">exim</Link>
@@ -156,4 +176,5 @@ const Header = ({ user, onLogout }) => {
 };
 
 export default Header;
+
 

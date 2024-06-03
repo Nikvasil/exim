@@ -12,15 +12,13 @@ footer {
 }
 
 .footer-container {
-    display: flex;
-    justify-content: space-evenly;
     max-width: 60vw; /* 1200px */
     width: 100%;
-    gap: 1vh;
+    gap: 8vh;
 }
 
 .footer-column {
-    text-align: left;
+    text-align: center;
     flex: 1;
 }
 
@@ -37,6 +35,6 @@ footer {
     }
 
     .footer-column {
-        margin-bottom: 1.0185vh; /* 10px */
+        margin: 1.0185vh 0; /* 10px */
     }
 }
