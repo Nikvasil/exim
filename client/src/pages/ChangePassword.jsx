@@ -64,10 +64,10 @@ const ChangePassword = ({ user }) => {
     const StyledTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }} />
     ))`& .MuiTooltip-tooltip {
-        font-size: 16px;
+        font-size: 2.2vh;
         font-family: "Linux Libertine G", serif;
         text-align: justify;
-        padding: 16px;
+        padding: 1.6vh;
         font-weight: lighter;
         background-color: #333333;
         border: white 1px solid;
@@ -79,7 +79,6 @@ const ChangePassword = ({ user }) => {
     };
 
     return (
-        <div className="content">
             <form onSubmit={handleSubmit}>
                 <label htmlFor="currentPassword">Current Password</label>
                 <div className="password-container">
@@ -91,16 +90,25 @@ const ChangePassword = ({ user }) => {
                         required
                     />
                     {showPassword ? (
-                        <VisibilityOffOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility}/>
+                        <VisibilityOffOutlinedIcon
+                            sx={{fontSize: "3vh"}}
+                            className="password-visibility-icon"
+                            onClick={togglePasswordVisibility}/>
                     ) : (
-                        <VisibilityOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility}/>
+                        <VisibilityOutlinedIcon
+                            sx={{fontSize: "3vh"}}
+                            className="password-visibility-icon"
+                            onClick={togglePasswordVisibility}/>
                     )}
                 </div>
                 <div className="label-password-container">
                     <label htmlFor="newPassword">New Password</label>
                     <StyledTooltip arrow placement="right-start"
-                                   title="Make sure your password is at least 8 characters long and contains an uppercase letter, a lowercase letter, a special character, and a number.">
-                        <HelpOutlineIcon fontSize="small" className="password-tooltip"/>
+                                   title="Make sure your password is at least 8 characters long and contains an
+                                   uppercase letter, a lowercase letter, a special character, and a number.">
+                        <HelpOutlineIcon
+                            sx={{fontSize: "2.6vh"}}
+                            className="password-tooltip"/>
                     </StyledTooltip>
                 </div>
                 <div className="password-container">
@@ -112,18 +120,23 @@ const ChangePassword = ({ user }) => {
                         required
                     />
                     {showPassword ? (
-                        <VisibilityOffOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility}/>
+                        <VisibilityOffOutlinedIcon
+                            sx={{fontSize: "3vh"}}
+                            className="password-visibility-icon"
+                            onClick={togglePasswordVisibility}/>
                     ) : (
-                        <VisibilityOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility}/>
+                        <VisibilityOutlinedIcon
+                            sx={{fontSize: "3vh"}}
+                            className="password-visibility-icon"
+                            onClick={togglePasswordVisibility}/>
                     )}
                 </div>
                 {error && <p className="error-message"><ErrorOutlineOutlinedIcon
-                    fontSize="small"
+                    sx={{fontSize: "2.6vh"}}
                     className="error-outline-outlined-icon"
                 ></ErrorOutlineOutlinedIcon>{error}</p>}
                 <button type="submit">Change Password</button>
             </form>
-        </div>
     );
 };
 

@@ -8,12 +8,12 @@ header, .header-container {
 }
 
 header {
-    border-bottom: solid 1px #333333;
+    border-bottom: solid 0.0556vh #333333; /* 1px */
     position: fixed;
     top: 0;
     z-index: 1000;
     background-color: #242424;
-    padding: 6px 0;
+    padding: 0.5556vh 0; /* 6px */
 }
 
 header a {
@@ -24,17 +24,17 @@ header a {
     align-items: center;
 }
 
-.header-button-outlined,.header-button-contained, .header-logo {
+.header-button-outlined, .header-button-contained, .header-logo {
     font-weight: bold;
 }
 
-.header-button-outlined,.header-button-contained, .header-account {
+.header-button-outlined, .header-button-contained, .header-account {
     text-align: center;
 }
 
 .header-logo {
     font-family: "Linux Libertine G", serif;
-    font-size: 40px;
+    font-size: 5vh; /* 40px */
 }
 
 .header-logo:hover {
@@ -43,16 +43,16 @@ header a {
 }
 
 .header-links {
-    gap: 10px;
-    margin: 11px;
+    gap: 1vh; /* 10px */
+    margin: 1.0185vh; /* 11px */
 }
 
 .header-button-contained, .header-button-outlined {
-    border: 2px solid white;
+    border: 0.101vh solid white; /* 2px */
     display: inline-block;
-    padding: 6px 12px;
-    font-size: 16px;
-    border-radius: 4px;
+    padding: 1.1111vh 2.2222vh; /* 6px 12px */
+    font-size: 2vh; /* 16px */
+    border-radius: 4px; /* 4px */
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
@@ -80,13 +80,36 @@ header a {
 }
 
 .header-account {
-    padding: 3px;
+    padding: 0.2778vh; /* 3px */
     vertical-align: middle;
 }
 
 .header-account:hover {
     cursor: pointer;
     background-color: #333333;
-    border-radius: 5px;
+    border-radius: 5px; /* 5px */
 }
+
+.header-account-username {
+    font-style: italic;
+    font-size: 2.2vh;
+    padding: 1.4vh;
+    margin: 0.5vh;
+}
+
+.header-account-divider {
+    height: 0.1vh;
+    background-color: #333333;
+    width: 80%;
+    margin: 0 10%;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
 

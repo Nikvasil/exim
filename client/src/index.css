@@ -37,17 +37,17 @@ a {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 6.6667vh; /* 3.2em -> 40px */
   line-height: 1.1;
   text-align: center;
 }
 
 main {
-  padding: 20px;
   flex: 1;
 }
 
 .content {
+  padding-top: 5.5556vh; /* 60px */
   flex: 1;
   display: flex;
   justify-content: center;

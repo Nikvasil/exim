@@ -56,7 +56,6 @@ const Login = ({ setUser }) => {
     };
 
     return (
-        <div className="content">
             <form onSubmit={handleSubmit}>
                 <h1>Log In to Exim</h1>
                 <label htmlFor="identifier">Email or Username</label>
@@ -77,9 +76,15 @@ const Login = ({ setUser }) => {
                         required
                     />
                     {showPassword ? (
-                        <VisibilityOffOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility} />
+                        <VisibilityOffOutlinedIcon
+                            sx={{fontSize: "3vh"}}
+                            className="password-visibility-icon"
+                            onClick={togglePasswordVisibility} />
                     ) : (
-                        <VisibilityOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility} />
+                        <VisibilityOutlinedIcon
+                            sx={{fontSize: "3vh"}}
+                            className="password-visibility-icon"
+                            onClick={togglePasswordVisibility} />
                     )}
                 </div>
                 <div className="login-remember-me">
@@ -97,7 +102,10 @@ const Login = ({ setUser }) => {
                 </div>
                 {error && (
                     <p className="error-message">
-                        <ErrorOutlineOutlinedIcon fontSize="small" className="error-outline-outlined-icon" />
+                        <ErrorOutlineOutlinedIcon
+                            sx={{fontSize: "2.6vh"}}
+                            fontSize="small"
+                            className="error-outline-outlined-icon" />
                         {error}
                     </p>
                 )}
@@ -106,7 +114,6 @@ const Login = ({ setUser }) => {
                     Or <Link to="/register" className="login-signup-link">Sign Up</Link> if you are not a member yet.
                 </div>
             </form>
-        </div>
     );
 };
 

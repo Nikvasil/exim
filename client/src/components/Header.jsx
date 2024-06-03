@@ -70,9 +70,11 @@ const Header = ({ user, onLogout }) => {
                         <div className="header-account">
                             <Avatar
                                 sx={{
+                                    width: "5.4vh", // Adapt size based on viewport height
+                                    height: "5.4vh", // Adapt size based on viewport height
                                     bgcolor: "#4D4D4D",
                                     fontFamily: "\"Linux Libertine G\", serif",
-                                    fontSize: "24px"
+                                    fontSize: "3vh" // Adjust font size for consistency
                                 }}
                                 variant="rounded"
                                 ref={anchorRef}
@@ -85,6 +87,7 @@ const Header = ({ user, onLogout }) => {
                                 {user.username[0]}
                             </Avatar>
                             <Popper
+                                sx={{ fontSize: "2.2vh" }}
                                 open={open}
                                 anchorEl={anchorRef.current}
                                 role={undefined}
@@ -99,7 +102,8 @@ const Header = ({ user, onLogout }) => {
                                     >
                                         <Paper
                                             sx={{
-                                                marginTop: "16px",
+                                                fontSize: "2.2vh",
+                                                marginTop: "0.5vh",
                                                 bgcolor: "#4D4D4D",
                                                 color: "white"
                                             }}
@@ -111,12 +115,16 @@ const Header = ({ user, onLogout }) => {
                                                     aria-labelledby="composition-button"
                                                     onKeyDown={handleListKeyDown}
                                                 >
+                                                    <div className="header-account-username">
+                                                        Hi, {user.username}!
+                                                    </div>
+                                                    <div className="header-account-divider"/>
                                                     <MenuItem
                                                         sx={{
                                                             fontFamily: "\"Linux Libertine G\", serif",
-                                                            fontSize: "16px",
-                                                            padding: "10px",
-                                                            margin: "4px"
+                                                            fontSize: "2.2vh",
+                                                            padding: "1.4vh",
+                                                            margin: "0.5vh"
                                                         }}
                                                         onClick={handleChangePassword}
                                                     >
@@ -125,9 +133,9 @@ const Header = ({ user, onLogout }) => {
                                                     <MenuItem
                                                         sx={{
                                                             fontFamily: "\"Linux Libertine G\", serif",
-                                                            fontSize: "16px",
-                                                            padding: "10px",
-                                                            margin: "4px"
+                                                            fontSize: "2.2vh",
+                                                            padding: "1.4vh",
+                                                            margin: "0.5vh"
                                                         }}
                                                         onClick={handleLogout}
                                                     >
@@ -148,3 +156,4 @@ const Header = ({ user, onLogout }) => {
 };
 
 export default Header;
+

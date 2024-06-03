@@ -80,10 +80,10 @@ const Home = ({ user, setUser }) => {
         <Tooltip {...props} classes={{ popper: className }} />
     ))`
         & .MuiTooltip-tooltip {
-            font-size: 16px;
+            font-size: 2.2vh;
             font-family: "Linux Libertine G", serif;
             text-align: justify;
-            padding: 16px;
+            padding: 1.6vh;
             font-weight: lighter;
             background-color: #333333;
             border: white 1px solid;
@@ -96,7 +96,9 @@ const Home = ({ user, setUser }) => {
             <div className="home-address-container">
                 {!user ? (
                     <div>
-                        <HomeOutlinedIcon className="home-icon" />
+                        <HomeOutlinedIcon
+                            sx={{fontSize: "3.2vh"}}
+                            className="home-icon" />
                         <Link to="/register" className="home-link">
                             Sign Up
                         </Link>{' '}
@@ -109,7 +111,9 @@ const Home = ({ user, setUser }) => {
                 ) : (
                     !user.homeAddress || isEditing ? (
                         <div>
-                            <HomeOutlinedIcon className="home-icon" />
+                            <HomeOutlinedIcon
+                                sx={{fontSize: "3.2vh"}}
+                                className="home-icon" />
                             Add your home address:
                             <input
                                 className="home-address-input"
@@ -133,19 +137,23 @@ const Home = ({ user, setUser }) => {
                                 placement="right"
                                 title="Make sure you have entered a real existing address."
                             >
-                                <HelpOutlineIcon fontSize="small" className="home-tooltip" />
+                                <HelpOutlineIcon
+                                    sx={{fontSize: "2.8vh"}}
+                                    className="home-tooltip" />
                             </StyledTooltip>
                         </div>
                     ) : (
                         <div>
-                            <HomeOutlinedIcon className="home-icon" />
+                            <HomeOutlinedIcon
+                                sx={{fontSize: "3.2vh"}}
+                                className="home-icon" />
                             Your home address is {user.homeAddress}
                             <button
                                 type="button"
                                 className="home-address-edit-button"
                                 onClick={() => setIsEditing(true)}
                             >
-                                <EditOutlinedIcon fontSize="small" />
+                                <EditOutlinedIcon sx={{fontSize: "2.2vh"}} />
                             </button>
                         </div>
                     )
