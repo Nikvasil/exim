@@ -30,6 +30,8 @@ const registerUser = async (req, res) => {
             _id: user._id,
             username: user.username,
             email: user.email,
+            homeAddress: "",
+            favouriteFacility: {},
             token: generateToken(user._id),
         });
     } catch (error) {
@@ -48,6 +50,8 @@ const authUser = asyncHandler(async (req, res) => {
             _id: user._id,
             username: user.username,
             email: user.email,
+            homeAddress: user.homeAddress,
+            favouriteFacility: {},
             token: generateToken(user._id),
         });
     } else {

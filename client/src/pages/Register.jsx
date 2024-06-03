@@ -6,7 +6,11 @@ import Tooltip from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined.js";
+import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
+import '../styles/Password.css';
+import '../styles/Error.css';
+import '../styles/Register.css';
+
 
 const Register = ({ setUser }) => {
     const [formData, setFormData] = useState({
@@ -67,16 +71,18 @@ const Register = ({ setUser }) => {
 
     const StyledTooltip = styled(({ className, ...props }) => (
         <Tooltip {...props} classes={{ popper: className }} />
-    ))`& .MuiTooltip-tooltip {
-        font-size: 16px;
-        font-family: "Linux Libertine G", serif;
-        text-align: justify;
-        padding: 16px;
-        font-weight: lighter;
-        background-color: #333333;
-        border: white 1px solid;
-        border-radius: 4px;
-    }`;
+    ))`
+        & .MuiTooltip-tooltip {
+            font-size: 16px;
+            font-family: "Linux Libertine G", serif;
+            text-align: justify;
+            padding: 16px;
+            font-weight: lighter;
+            background-color: #333333;
+            border: white 1px solid;
+            border-radius: 4px;
+        }
+    `;
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -102,18 +108,17 @@ const Register = ({ setUser }) => {
                     onChange={handleChange}
                     required
                 />
-                <div className="register-password-container">
+                <div className="label-password-container">
                     <label htmlFor="password">Password</label>
                     <StyledTooltip
-                        arrow placement="right-start"
-                        title="Make sure your password is at least 8 characters long and contains an uppercase letter,
-                        a lowercase letter, a special character, and a number.">
-                        <HelpOutlineIcon
-                            fontSize="small"
-                            className="password-icon" />
+                        arrow
+                        placement="right-start"
+                        title="Make sure your password is at least 8 characters long and contains an uppercase letter, a lowercase letter, a special character, and a number."
+                    >
+                        <HelpOutlineIcon fontSize="small" className="password-icon" />
                     </StyledTooltip>
                 </div>
-                <div className="password-input-container">
+                <div className="password-container">
                     <input
                         type={showPassword ? 'text' : 'password'}
                         name="password"
@@ -122,15 +127,17 @@ const Register = ({ setUser }) => {
                         required
                     />
                     {showPassword ? (
-                        <VisibilityOffOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility} />
+                        <VisibilityOffOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility} />
                     ) : (
-                        <VisibilityOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility} />
+                        <VisibilityOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility} />
                     )}
                 </div>
-                {error && <p className="error-message"><ErrorOutlineOutlinedIcon
-                    fontSize="small"
-                    className="error-outline-outlined-icon"
-                ></ErrorOutlineOutlinedIcon>{error}</p>}
+                {error && (
+                    <p className="error-message">
+                        <ErrorOutlineOutlinedIcon fontSize="small" className="error-outline-outlined-icon" />
+                        {error}
+                    </p>
+                )}
                 <button type="submit">Sign Up</button>
             </form>
         </div>
@@ -138,7 +145,3 @@ const Register = ({ setUser }) => {
 };
 
 export default Register;
-
-
-
-

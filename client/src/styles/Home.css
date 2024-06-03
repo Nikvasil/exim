@@ -1,0 +1,109 @@
+.home-container, .home-filter-container, .home-success-message {
+    width: 100%;
+}
+
+.home-link {
+    color: white;
+    font-weight: bold;
+}
+
+.home-link:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.home-address-container, .home-filter-container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.home-address-container {
+    padding: 32px 0;
+    font-size: 18px;
+    align-items: center;
+}
+
+.home-icon, .home-tooltip {
+    vertical-align: middle;
+}
+
+.home-icon {
+    padding-right: 10px;
+    padding-bottom: 6px;
+}
+
+.home-address-input, .home-address-button {
+    padding: 6px;
+    font-size: 16px;
+}
+
+.home-address-input {
+    margin: 0 8px;
+    box-sizing: border-box;
+}
+
+.home-address-button, .home-address-edit-button {
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    background-color: transparent;
+    border: 2px solid #fff;
+}
+
+.home-address-button:hover {
+    background-color: #fff;
+    color: #333;
+    border-color: #fff;
+}
+
+.home-address-edit-button {
+    margin: 0 14px;
+    padding: 4px;
+    font-size: 1px;
+}
+
+.home-address-edit-button:hover {
+    background-color: #fff;
+    color: #333;
+    border-color: #fff;
+}
+
+.home-tooltip {
+    margin-left: 8px;
+    padding: 2px;
+}
+
+.home-tooltip:hover {
+    cursor: pointer;
+    background-color: #3D3D3D;
+    border-radius: 12px;
+}
+
+.home-filter-container {
+    padding: 18px 0;
+    background-color: #333333;
+}
+
+.home-filter-checkbox-container {
+    margin: 0 16px;
+}
+
+.home-map {
+    height: 460px;
+}
+
+.home-success-message {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+}

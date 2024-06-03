@@ -1,0 +1,10 @@
+.error-message {
+    color: red;
+    text-align: center;
+}
+
+.error-outline-outlined-icon {
+    padding-right: 6px;
+    padding-bottom: 6px;
+    vertical-align: middle;
+}

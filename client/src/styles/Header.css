@@ -1,0 +1,92 @@
+header, .header-container, .header-links {
+    display: flex;
+}
+
+header, .header-container {
+    justify-content: space-around;
+    width: 100%;
+}
+
+header {
+    border-bottom: solid 1px #333333;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: #242424;
+    padding: 6px 0;
+}
+
+header a {
+    color: white;
+}
+
+.header-container {
+    align-items: center;
+}
+
+.header-button-outlined,.header-button-contained, .header-logo {
+    font-weight: bold;
+}
+
+.header-button-outlined,.header-button-contained, .header-account {
+    text-align: center;
+}
+
+.header-logo {
+    font-family: "Linux Libertine G", serif;
+    font-size: 40px;
+}
+
+.header-logo:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.header-links {
+    gap: 10px;
+    margin: 11px;
+}
+
+.header-button-contained, .header-button-outlined {
+    border: 2px solid white;
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.header-button-contained {
+    background-color: white;
+    color: #333;
+}
+
+.header-button-contained:hover {
+    background-color: #333;
+    border-color: #f0f0f0;
+    color: white;
+}
+
+.header-button-outlined {
+    background-color: transparent;
+    color: white;
+}
+
+.header-button-outlined:hover {
+    background-color: white;
+    color: #333;
+    border-color: white;
+}
+
+.header-account {
+    padding: 3px;
+    vertical-align: middle;
+}
+
+.header-account:hover {
+    cursor: pointer;
+    background-color: #333333;
+    border-radius: 5px;
+}
+

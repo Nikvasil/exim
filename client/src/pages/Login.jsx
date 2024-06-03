@@ -6,6 +6,11 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 import Checkbox from '@mui/material/Checkbox';
 import { grey } from '@mui/material/colors';
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
+import '../styles/Password.css';
+import '../styles/Login.css';
+import '../styles/Error.css';
+import '../styles/Form.css';
+
 
 const Login = ({ setUser }) => {
     const [formData, setFormData] = useState({
@@ -63,7 +68,7 @@ const Login = ({ setUser }) => {
                     required
                 />
                 <label htmlFor="password">Password</label>
-                <div className="password-input-container">
+                <div className="password-container">
                     <input
                         type={showPassword ? 'text' : 'password'}
                         name="password"
@@ -72,12 +77,12 @@ const Login = ({ setUser }) => {
                         required
                     />
                     {showPassword ? (
-                        <VisibilityOffOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility} />
+                        <VisibilityOffOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility} />
                     ) : (
-                        <VisibilityOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility} />
+                        <VisibilityOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility} />
                     )}
                 </div>
-                <div className="remember-me">
+                <div className="login-remember-me">
                     <Checkbox
                         checked={rememberMe}
                         onChange={handleCheckboxChange}
@@ -90,13 +95,14 @@ const Login = ({ setUser }) => {
                     />
                     Remember me
                 </div>
-                {error && <p className="error-message"> <ErrorOutlineOutlinedIcon
-                    fontSize="small"
-                    className="error-outline-outlined-icon"
-                    ></ErrorOutlineOutlinedIcon>
-                    {error}</p>}
+                {error && (
+                    <p className="error-message">
+                        <ErrorOutlineOutlinedIcon fontSize="small" className="error-outline-outlined-icon" />
+                        {error}
+                    </p>
+                )}
                 <button type="submit">Log In</button>
-                <div className="login-signup">
+                <div className="login-signup-container">
                     Or <Link to="/register" className="login-signup-link">Sign Up</Link> if you are not a member yet.
                 </div>
             </form>
@@ -105,7 +111,3 @@ const Login = ({ setUser }) => {
 };
 
 export default Login;
-
-
-
-

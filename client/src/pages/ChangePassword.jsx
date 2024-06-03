@@ -6,7 +6,10 @@ import Tooltip from '@mui/material/Tooltip';
 import { styled } from '@mui/material/styles';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined.js";
+import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
+import '../styles/Password.css';
+import '../styles/Error.css';
+import '../styles/Form.css';
 
 
 const ChangePassword = ({ user }) => {
@@ -79,7 +82,7 @@ const ChangePassword = ({ user }) => {
         <div className="content">
             <form onSubmit={handleSubmit}>
                 <label htmlFor="currentPassword">Current Password</label>
-                <div className="password-input-container">
+                <div className="password-container">
                     <input
                         type={showPassword ? 'text' : 'password'}
                         name="currentPassword"
@@ -88,19 +91,19 @@ const ChangePassword = ({ user }) => {
                         required
                     />
                     {showPassword ? (
-                        <VisibilityOffOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility}/>
+                        <VisibilityOffOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility}/>
                     ) : (
-                        <VisibilityOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility}/>
+                        <VisibilityOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility}/>
                     )}
                 </div>
-                <div className="register-password-container">
+                <div className="label-password-container">
                     <label htmlFor="newPassword">New Password</label>
                     <StyledTooltip arrow placement="right-start"
                                    title="Make sure your password is at least 8 characters long and contains an uppercase letter, a lowercase letter, a special character, and a number.">
-                        <HelpOutlineIcon fontSize="small" className="password-icon"/>
+                        <HelpOutlineIcon fontSize="small" className="password-tooltip"/>
                     </StyledTooltip>
                 </div>
-                <div className="password-input-container">
+                <div className="password-container">
                     <input
                         type={showPassword ? 'text' : 'password'}
                         name="newPassword"
@@ -109,9 +112,9 @@ const ChangePassword = ({ user }) => {
                         required
                     />
                     {showPassword ? (
-                        <VisibilityOffOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility}/>
+                        <VisibilityOffOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility}/>
                     ) : (
-                        <VisibilityOutlinedIcon className="visibility-icon" onClick={togglePasswordVisibility}/>
+                        <VisibilityOutlinedIcon className="password-visibility-icon" onClick={togglePasswordVisibility}/>
                     )}
                 </div>
                 {error && <p className="error-message"><ErrorOutlineOutlinedIcon
@@ -125,4 +128,3 @@ const ChangePassword = ({ user }) => {
 };
 
 export default ChangePassword;
-

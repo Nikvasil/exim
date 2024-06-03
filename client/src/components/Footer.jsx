@@ -1,6 +1,7 @@
 import React from 'react';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PlaceIcon from '@mui/icons-material/Place';
+import '../styles/Footer.css';
 
 
 const Footer = () => {
