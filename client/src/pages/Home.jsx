@@ -178,7 +178,7 @@ const Home = ({ user, setUser }) => {
                 </div>
             )}
             <div className="home-filter-container">
-                <div className="filter-checkbox-container">
+                <div className="home-filter-checkbox-container">
                     <Checkbox
                         onChange={handleSelectAll}
                         checked={selectAll}

@@ -107,7 +107,6 @@ const Header = ({ user, onLogout }) => {
                                 {user.username[0]}
                             </Avatar>
                             <Popper
-                                sx={{ fontSize: "2.2vh" }}
                                 open={open}
                                 anchorEl={anchorRef.current}
                                 role={undefined}
@@ -122,7 +121,6 @@ const Header = ({ user, onLogout }) => {
                                     >
                                         <Paper
                                             sx={{
-                                                fontSize: "2.2vh",
                                                 marginTop: "0.5vh",
                                                 bgcolor: "#4D4D4D",
                                                 color: "white"
@@ -142,7 +140,6 @@ const Header = ({ user, onLogout }) => {
                                                     <MenuItem
                                                         sx={{
                                                             fontFamily: "\"Linux Libertine G\", serif",
-                                                            fontSize: "2.2vh",
                                                             padding: "1.4vh",
                                                             margin: "0.5vh"
                                                         }}
@@ -153,7 +150,6 @@ const Header = ({ user, onLogout }) => {
                                                     <MenuItem
                                                         sx={{
                                                             fontFamily: "\"Linux Libertine G\", serif",
-                                                            fontSize: "2.2vh",
                                                             padding: "1.4vh",
                                                             margin: "0.5vh"
                                                         }}

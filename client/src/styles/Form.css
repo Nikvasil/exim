@@ -46,5 +46,13 @@ form button:hover {
         width: 70%;
         padding: 0 1.0101vw; /* 20px */
     }
+
+    form input, form button {
+        margin: 1.5vh 0; /* 12px */
+    }
+
+    form label {
+        margin: 0.4vh;
+    }
 }
 

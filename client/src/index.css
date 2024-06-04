@@ -47,7 +47,6 @@ main {
 }
 
 .content {
-  padding-top: 5.5556vh; /* 60px */
   flex: 1;
   display: flex;
   justify-content: center;
