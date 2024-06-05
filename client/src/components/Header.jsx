@@ -7,6 +7,7 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
+import axios from 'axios';
 import '../styles/Header.css';
 
 const Header = ({ user, onLogout }) => {
@@ -37,6 +38,25 @@ const Header = ({ user, onLogout }) => {
     const handleChangePassword = () => {
         setOpen(false);
         navigate('/change-password');
+    };
+
+    const handleDelete = async () => {
+        const confirmDelete = window.confirm('Are you sure you want to delete your account? This action cannot be undone.');
+        if (confirmDelete) {
+            try {
+                await setOpen(false);
+                await axios.delete(`/api/users/${user._id}`, {
+                    headers: {
+                        Authorization: `Bearer ${user.token}`
+                    }
+                });
+                localStorage.removeItem('user');
+                onLogout();
+                navigate('/');
+            } catch (error) {
+                console.error('Error deleting user:', error);
+            }
+        }
     };
 
     const handleListKeyDown = (event) => {
@@ -140,6 +160,7 @@ const Header = ({ user, onLogout }) => {
                                                     <MenuItem
                                                         sx={{
                                                             fontFamily: "\"Linux Libertine G\", serif",
+                                                            borderRadius: "4px",
                                                             padding: "1.4vh",
                                                             margin: "0.5vh"
                                                         }}
@@ -150,12 +171,27 @@ const Header = ({ user, onLogout }) => {
                                                     <MenuItem
                                                         sx={{
                                                             fontFamily: "\"Linux Libertine G\", serif",
+                                                            borderRadius: "4px",
                                                             padding: "1.4vh",
                                                             margin: "0.5vh"
                                                         }}
                                                         onClick={handleLogout}
                                                     >
                                                         Log Out
+                                                    </MenuItem>
+                                                    <MenuItem
+                                                        className="header-menu-item"
+                                                        sx={{
+                                                            '&:hover': {bgcolor: "#A81700"},
+                                                            borderRadius: "4px",
+                                                            bgcolor: "#C91C00",
+                                                            fontFamily: "\"Linux Libertine G\", serif",
+                                                            padding: "1.4vh",
+                                                            margin: "0.5vh",
+                                                        }}
+                                                        onClick={handleDelete}
+                                                    >
+                                                        Delete
                                                     </MenuItem>
                                                 </MenuList>
                                             </ClickAwayListener>
@@ -172,5 +208,3 @@ const Header = ({ user, onLogout }) => {
 };
 
 export default Header;
-
-

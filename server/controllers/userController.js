@@ -75,6 +75,7 @@ const changePassword = asyncHandler(async (req, res) => {
     }
 });
 
+
 const updateHomeAddress = asyncHandler(async (req, res) => {
     const { userId, homeAddress } = req.body;
 
@@ -94,9 +95,23 @@ const updateHomeAddress = asyncHandler(async (req, res) => {
 });
 
 
+const deleteUser = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+
+    if (user) {
+        await User.deleteOne({ _id: req.params.id });
+        res.json({ message: 'User removed' });
+    } else {
+        res.status(404);
+        throw new Error('User not found');
+    }
+});
+
+
 module.exports = {
     registerUser,
     authUser,
     changePassword,
-    updateHomeAddress
+    updateHomeAddress,
+    deleteUser
 };

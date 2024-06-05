@@ -46,6 +46,9 @@ const ChangePassword = ({ user }) => {
 
         try {
             const response = await axios.post('/api/users/change-password', {
+                headers: {
+                    Authorization: `Bearer ${user.token}`
+                },
                 userId: user._id,
                 currentPassword: formData.currentPassword,
                 newPassword: formData.newPassword,

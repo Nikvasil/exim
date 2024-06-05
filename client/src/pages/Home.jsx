@@ -65,6 +65,9 @@ const Home = ({ user, setUser }) => {
         e.preventDefault();
         try {
             const response = await axios.post('/api/users/update-home-address', {
+                headers: {
+                    Authorization: `Bearer ${user.token}`
+                },
                 userId: user._id,
                 homeAddress,
             });
