@@ -100,15 +100,13 @@ const Login = ({ setUser }) => {
                     />
                     Remember me
                 </div>
-                {error && (
+                {error &&
                     <p className="error-message">
                         <ErrorOutlineOutlinedIcon
-                            sx={{fontSize: "2.6vh"}}
-                            fontSize="small"
-                            className="error-outline-outlined-icon" />
+                            className="error-outline-outlined-icon">
+                        </ErrorOutlineOutlinedIcon>
                         {error}
-                    </p>
-                )}
+                    </p>}
                 <button type="submit">Log In</button>
                 <div className="login-signup-container">
                     Or <Link to="/register" className="login-signup-link">Sign Up</Link> if you are not a member yet.

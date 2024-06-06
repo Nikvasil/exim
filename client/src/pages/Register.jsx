@@ -140,15 +140,13 @@ const Register = ({ setUser }) => {
                             onClick={togglePasswordVisibility} />
                     )}
                 </div>
-                {error && (
+                {error &&
                     <p className="error-message">
                         <ErrorOutlineOutlinedIcon
-                            sx={{fontSize: "2.6vh"}}
-                            fontSize="small"
-                            className="error-outline-outlined-icon" />
+                            className="error-outline-outlined-icon">
+                        </ErrorOutlineOutlinedIcon>
                         {error}
-                    </p>
-                )}
+                    </p>}
                 <button type="submit">Sign Up</button>
             </form>
     );

@@ -1,7 +1,7 @@
 form {
     display: flex;
     flex-direction: column;
-    width: 22vw; /* 360px */
+    width: 25.63vw; /* 360px */
     margin: 0 auto;
 }
 
@@ -15,7 +15,7 @@ form input, form button {
 }
 
 form input {
-    font-size: 2.2vh; /* 14px */
+    font-size: 2vh; /* 14px */
     width: 100%;
     box-sizing: border-box;
 }

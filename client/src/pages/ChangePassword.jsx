@@ -46,13 +46,13 @@ const ChangePassword = ({ user }) => {
 
         try {
             const response = await axios.post('/api/users/change-password', {
-                headers: {
-                    Authorization: `Bearer ${user.token}`
-                },
                 userId: user._id,
                 currentPassword: formData.currentPassword,
                 newPassword: formData.newPassword,
-            });
+            },
+                {headers: {
+                        Authorization: `Bearer ${user.token}`
+                    }});
             if (response.data.success) {
                 navigate('/?passwordChanged=true');
             } else {
@@ -83,6 +83,7 @@ const ChangePassword = ({ user }) => {
 
     return (
             <form onSubmit={handleSubmit}>
+                <h1>Change Password</h1>
                 <label htmlFor="currentPassword">Current Password</label>
                 <div className="password-container">
                     <input
@@ -134,10 +135,13 @@ const ChangePassword = ({ user }) => {
                             onClick={togglePasswordVisibility}/>
                     )}
                 </div>
-                {error && <p className="error-message"><ErrorOutlineOutlinedIcon
-                    sx={{fontSize: "2.6vh"}}
-                    className="error-outline-outlined-icon"
-                ></ErrorOutlineOutlinedIcon>{error}</p>}
+                {error &&
+                    <p className="error-message">
+                    <ErrorOutlineOutlinedIcon
+                    className="error-outline-outlined-icon">
+                    </ErrorOutlineOutlinedIcon>
+                        {error}
+                    </p>}
                 <button type="submit">Change Password</button>
             </form>
     );

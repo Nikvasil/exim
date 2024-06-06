@@ -187,7 +187,9 @@ const Header = ({ user, onLogout }) => {
                                                             bgcolor: "#C91C00",
                                                             fontFamily: "\"Linux Libertine G\", serif",
                                                             padding: "1.4vh",
-                                                            margin: "0.5vh",
+                                                            marginTop: "0.5vh",
+                                                            marginLeft: "0.5vh",
+                                                            marginRight: "0.5vh"
                                                         }}
                                                         onClick={handleDelete}
                                                     >

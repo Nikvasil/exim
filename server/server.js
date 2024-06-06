@@ -33,7 +33,7 @@ app.use(cors({
 
 
 app.use('/api/users', userRoutes); // User routes
-app.use('/api/kindergartens', kindergartenRoutes);
+app.use('/api/kindergarten', kindergartenRoutes);
 app.use('/api/schools', schoolRoutes);
 app.use('/api/social-child-projects', socialChildProjectRoutes);
 app.use('/api/social-teenager-projects', socialTeenagerProjectRoutes);
