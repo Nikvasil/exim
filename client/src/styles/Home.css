@@ -47,6 +47,7 @@
 }
 
 .home-address-button, .home-address-edit-button {
+    margin: 0 0.4vh;
     cursor: pointer;
     display: inline-block;
     border-radius: 4px; /* 4px */
@@ -66,7 +67,6 @@
 .home-address-edit-button {
     margin: 0 1.2963vh; /* 14px */
     padding: 0.3704vh; /* 4px */
-    font-size: 1px; /* 1px */
 }
 
 .home-address-edit-button:hover {

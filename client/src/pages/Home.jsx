@@ -17,7 +17,7 @@ import axios from 'axios';
 import '../styles/Home.css';
 import '../styles/Error.css';
 import Map from '../components/Map.jsx';
-import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
+
 
 const Home = ({ user, setUser }) => {
     const [message, setMessage] = useState('');
@@ -189,8 +189,8 @@ const Home = ({ user, setUser }) => {
                     !user.homeAddress || isEditing ? (
                         <div>
                             <HomeOutlinedIcon
-                                sx={{ fontSize: "3.2vh" }}
-                                className="home-icon" />
+                                sx={{fontSize: "3.2vh"}}
+                                className="home-icon"/>
                             Add your home address:
                             <input
                                 className="home-address-input"
@@ -209,28 +209,38 @@ const Home = ({ user, setUser }) => {
                             >
                                 Add
                             </button>
+                            <button
+                                type="button"
+                                className="home-address-button"
+                                onClick={() => {
+                                    setIsEditing(!isEditing);
+                                }}
+                            >
+                                X
+                            </button>
                             <StyledTooltip
                                 arrow
                                 placement="right"
                                 title="Make sure you have entered a real existing address."
                             >
                                 <HelpOutlineIcon
-                                    sx={{ fontSize: "2.8vh" }}
-                                    className="home-tooltip" />
+                                    sx={{fontSize: "2.8vh"}}
+                                    className="home-tooltip"/>
                             </StyledTooltip>
                         </div>
                     ) : (
                         <div>
                             <HomeOutlinedIcon
-                                sx={{ fontSize: "3.2vh" }}
-                                className="home-icon" />
+                                sx={{fontSize: "3.2vh"}}
+                                className="home-icon"/>
                             Your home address is {user.homeAddress}
                             <button
                                 type="button"
                                 className="home-address-edit-button"
                                 onClick={() => {
                                     setOldHomeAddress(user.homeAddress);
-                                    setIsEditing(true);
+                                    setHomeAddress(user.homeAddress);
+                                    setIsEditing(!isEditing);
                                 }}
                             >
                                 <EditOutlinedIcon sx={{ fontSize: "2.2vh" }} />

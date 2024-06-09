@@ -142,7 +142,7 @@ const ChangePassword = ({ user }) => {
                     </ErrorOutlineOutlinedIcon>
                         {error}
                     </p>}
-                <button type="submit">Change Password</button>
+                <button type="submit">Change</button>
             </form>
     );
 };
