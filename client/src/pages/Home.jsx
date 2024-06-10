@@ -1,22 +1,12 @@
 import L from 'leaflet';
 import { useEffect, useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
-import 'leaflet-routing-machine';
-import 'leaflet/dist/leaflet.css';
-import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
-import Alert from '@mui/material/Alert';
-import { grey } from '@mui/material/colors';
-import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-import Checkbox from '@mui/material/Checkbox';
-import Tooltip from '@mui/material/Tooltip';
-import { styled } from '@mui/material/styles';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import Map from '../components/Map/Map.jsx';
+import AddressForm from '../components/Home/AddressForm';
+import Messages from '../components/Home/Messages';
+import FilterCheckbox from '../components/Home/FilterCheckbox';
 import '../styles/Home.css';
-import '../styles/Error.css';
-import Map from '../components/Map.jsx';
 
 
 const Home = ({ user, setUser }) => {
@@ -29,10 +19,10 @@ const Home = ({ user, setUser }) => {
     const [error, setError] = useState(null);
     const [oldHomeAddress, setOldHomeAddress] = useState(user ? user.homeAddress : '');
     const [checkboxes, setCheckboxes] = useState({
-        "schools": false,
-        "kindergarten": false,
-        "social-child-projects": false,
-        "social-teenager-projects": false,
+        schools: false,
+        kindergarten: false,
+        'social-child-projects': false,
+        'social-teenager-projects': false,
     });
 
     useEffect(() => {
@@ -56,10 +46,10 @@ const Home = ({ user, setUser }) => {
         const checked = e.target.checked;
         setSelectAll(checked);
         setCheckboxes({
-            "schools": checked,
-            "kindergarten": checked,
-            "social-child-projects": checked,
-            "social-teenager-projects": checked,
+            schools: checked,
+            kindergarten: checked,
+            'social-child-projects': checked,
+            'social-teenager-projects': checked,
         });
     };
 
@@ -78,7 +68,7 @@ const Home = ({ user, setUser }) => {
 
         // Check for empty input
         if (!homeAddress.trim()) {
-            setError("Home address cannot be empty.");
+            setError('Home address cannot be empty.');
             setMessage(null); // Clear any previous success message
             setTimeout(() => setError(''), 3000);
             return;
@@ -150,169 +140,33 @@ const Home = ({ user, setUser }) => {
         }
     };
 
-    const StyledTooltip = styled(({ className, ...props }) => (
-        <Tooltip {...props} classes={{ popper: className }} />
-    ))`
-        & .MuiTooltip-tooltip {
-            font-size: 2.2vh;
-            font-family: "Linux Libertine G", serif;
-            text-align: justify;
-            padding: 1.6vh;
-            font-weight: lighter;
-            background-color: #333333;
-            border: white 1px solid;
-            border-radius: 4px;
-        }
-    `;
-
-    // Extract selected categories
     const selectedCategories = Object.keys(checkboxes).filter(key => checkboxes[key]);
 
     return (
         <div className="home-container">
-            <div className="home-address-container">
-                {!user ? (
-                    <div>
-                        <HomeOutlinedIcon
-                            sx={{ fontSize: "3.2vh" }}
-                            className="home-icon" />
-                        <Link to="/register" className="home-link">
-                            Sign Up
-                        </Link>{' '}
-                        or{' '}
-                        <Link to="/login" className="home-link">
-                            Log In
-                        </Link>{' '}
-                        to add your home address
-                    </div>
-                ) : (
-                    !user.homeAddress || isEditing ? (
-                        <div>
-                            <HomeOutlinedIcon
-                                sx={{fontSize: "3.2vh"}}
-                                className="home-icon"/>
-                            Add your home address:
-                            <input
-                                className="home-address-input"
-                                type="text"
-                                name="homeAddress"
-                                id="homeAddress"
-                                placeholder="Mustermannstraße 1a"
-                                value={homeAddress}
-                                onChange={handleChange}
-                                required
-                            />
-                            <button
-                                type="submit"
-                                className="home-address-button"
-                                onClick={handleSubmit}
-                            >
-                                Add
-                            </button>
-                            <button
-                                type="button"
-                                className="home-address-button"
-                                onClick={() => {
-                                    setIsEditing(!isEditing);
-                                }}
-                            >
-                                X
-                            </button>
-                            <StyledTooltip
-                                arrow
-                                placement="right"
-                                title="Make sure you have entered a real existing address."
-                            >
-                                <HelpOutlineIcon
-                                    sx={{fontSize: "2.8vh"}}
-                                    className="home-tooltip"/>
-                            </StyledTooltip>
-                        </div>
-                    ) : (
-                        <div>
-                            <HomeOutlinedIcon
-                                sx={{fontSize: "3.2vh"}}
-                                className="home-icon"/>
-                            Your home address is {user.homeAddress}
-                            <button
-                                type="button"
-                                className="home-address-edit-button"
-                                onClick={() => {
-                                    setOldHomeAddress(user.homeAddress);
-                                    setHomeAddress(user.homeAddress);
-                                    setIsEditing(!isEditing);
-                                }}
-                            >
-                                <EditOutlinedIcon sx={{ fontSize: "2.2vh" }} />
-                            </button>
-                        </div>
-                    )
-                )}
-            </div>
-            {error && (
-                <div className="home-message">
-                    <Alert
-                        variant="filled"
-                        severity="error"
-                    >
-                        {error}
-                    </Alert>
-                </div>
-            )}
-            {message && (
-                <div className="home-message">
-                    <Alert
-                        icon={<CheckBoxOutlinedIcon fontSize="inherit" sx={{ color: grey[100] }} />}
-                        sx={{
-                            color: grey[100],
-                            borderRadius: '4px',
-                            borderWidth: '0px',
-                            borderColor: grey[900],
-                            backgroundColor: grey[600],
-                        }}
-                        variant="outlined"
-                        severity="success"
-                    >
-                        {message}
-                    </Alert>
-                </div>
-            )}
-            <div className="home-filter-container">
-                <div className="home-filter-checkbox-container">
-                    <Checkbox
-                        onChange={handleSelectAll}
-                        checked={selectAll}
-                        sx={{
-                            color: grey[600],
-                            '&.Mui-checked': {
-                                color: grey[400],
-                            },
-                        }}
-                    />
-                    Select All
-                </div>
-                {Object.keys(checkboxes).map((key) => (
-                    <div className="home-filter-checkbox-container" key={key}>
-                        <Checkbox
-                            name={key}
-                            onChange={handleCheckboxChange}
-                            checked={checkboxes[key]}
-                            sx={{
-                                color: grey[600],
-                                '&.Mui-checked': {
-                                    color: grey[400],
-                                },
-                            }}
-                        />
-                        {(key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')).replaceAll("-", " ")}
-                    </div>
-                ))}
-            </div>
+            <AddressForm
+                user={user}
+                isEditing={isEditing}
+                homeAddress={homeAddress}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                setIsEditing={setIsEditing}
+                oldHomeAddress={oldHomeAddress}
+                setOldHomeAddress={setOldHomeAddress}
+            />
+            <Messages error={error} message={message} />
+            <FilterCheckbox
+                checkboxes={checkboxes}
+                handleCheckboxChange={handleCheckboxChange}
+                handleSelectAll={handleSelectAll}
+                selectAll={selectAll}
+            />
             <div className="home-leaflet-container">
                 <Map user={user} homeCoordinates={homeCoordinates} categories={selectedCategories} />
             </div>
         </div>
     );
 };
+
 
 export default Home;
