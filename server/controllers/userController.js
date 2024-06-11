@@ -44,7 +44,6 @@ const authUser = asyncHandler(async (req, res) => {
     const { identifier, password } = req.body;
 
     const user = await User.findOne({ $or: [{ email: identifier }, { username: identifier }] });
-    console.log(user.favouriteFacility);
 
     if (user && (await user.matchPassword(password))) {
         res.json({

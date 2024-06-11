@@ -14,9 +14,9 @@ function App() {
     const [favouriteFacility, setFavouriteFacility] = useState(user ? user.favouriteFacility : null);
 
     useEffect(() => {
-        const savedUser = localStorage.getItem('user');
-        if (savedUser) {
-            setUser(JSON.parse(savedUser));
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
         }
     }, []);
 
