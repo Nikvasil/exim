@@ -9,15 +9,22 @@ import FilterCheckbox from '../components/Home/FilterCheckbox';
 import '../styles/Home.css';
 
 
-const Home = ({ user, setUser }) => {
+const Home = ({
+                  user,
+                  setUser,
+                  selectedFacility,
+                  setSelectedFacility,
+                  favouriteFacility,
+                  setFavouriteFacility
+}) => {
     const [message, setMessage] = useState('');
     const location = useLocation();
+    const [error, setError] = useState(null);
     const [homeAddress, setHomeAddress] = useState(user ? user.homeAddress : '');
+    const [oldHomeAddress, setOldHomeAddress] = useState(user ? user.homeAddress : '');
+    const [homeCoordinates, setHomeCoordinates] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
     const [selectAll, setSelectAll] = useState(false);
-    const [homeCoordinates, setHomeCoordinates] = useState(null);
-    const [error, setError] = useState(null);
-    const [oldHomeAddress, setOldHomeAddress] = useState(user ? user.homeAddress : '');
     const [checkboxes, setCheckboxes] = useState({
         schools: false,
         kindergarten: false,
@@ -38,7 +45,7 @@ const Home = ({ user, setUser }) => {
     }, [location]);
 
     const handleChange = (e) => {
-        setError(null); // Reset error message on change
+        setError(null);
         setHomeAddress(e.target.value);
     };
 
@@ -66,10 +73,9 @@ const Home = ({ user, setUser }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Check for empty input
         if (!homeAddress.trim()) {
             setError('Home address cannot be empty.');
-            setMessage(null); // Clear any previous success message
+            setMessage(null);
             setTimeout(() => setError(''), 3000);
             return;
         }
@@ -88,17 +94,17 @@ const Home = ({ user, setUser }) => {
             });
 
             setUser((prevUser) => ({ ...prevUser, homeAddress: response.data.homeAddress }));
-            setOldHomeAddress(response.data.homeAddress); // Update old address to the new one
+            setOldHomeAddress(response.data.homeAddress);
             setIsEditing(false);
-            setError(null); // Clear any previous error message
+            setError(null);
             setMessage('Home address updated successfully');
             setTimeout(() => setMessage(''), 3000);
         } catch (error) {
-            setMessage(null); // Clear any previous success message
+            setMessage(null);
             setError("Unfortunately, we couldn't find your home.");
             setIsEditing(false);
             setTimeout(() => setError(''), 3000);
-            setHomeAddress(oldHomeAddress); // Revert to the old address
+            setHomeAddress(oldHomeAddress);
             console.error('Error updating home address:', error);
         }
     };
@@ -153,6 +159,7 @@ const Home = ({ user, setUser }) => {
                 setIsEditing={setIsEditing}
                 oldHomeAddress={oldHomeAddress}
                 setOldHomeAddress={setOldHomeAddress}
+                setHomeAddress={setHomeAddress}
             />
             <Messages error={error} message={message} />
             <FilterCheckbox
@@ -162,7 +169,16 @@ const Home = ({ user, setUser }) => {
                 selectAll={selectAll}
             />
             <div className="home-leaflet-container">
-                <Map user={user} homeCoordinates={homeCoordinates} categories={selectedCategories} />
+                <Map
+                    user={user}
+                    homeCoordinates={homeCoordinates}
+                    categories={selectedCategories}
+                    setUser={setUser}
+                    selectedFacility={selectedFacility}
+                    setSelectedFacility={setSelectedFacility}
+                    favouriteFacility={favouriteFacility}
+                    setFavouriteFacility={setFavouriteFacility}
+                />
             </div>
         </div>
     );

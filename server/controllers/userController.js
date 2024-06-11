@@ -21,7 +21,7 @@ const registerUser = async (req, res) => {
     const user = new User({
         username,
         email,
-        password
+        password,
     });
 
     try {
@@ -31,7 +31,7 @@ const registerUser = async (req, res) => {
             username: user.username,
             email: user.email,
             homeAddress: "",
-            favouriteFacility: {},
+            favouriteFacility: null,
             token: generateToken(user._id),
         });
     } catch (error) {
@@ -44,6 +44,7 @@ const authUser = asyncHandler(async (req, res) => {
     const { identifier, password } = req.body;
 
     const user = await User.findOne({ $or: [{ email: identifier }, { username: identifier }] });
+    console.log(user.favouriteFacility);
 
     if (user && (await user.matchPassword(password))) {
         res.json({
@@ -51,7 +52,7 @@ const authUser = asyncHandler(async (req, res) => {
             username: user.username,
             email: user.email,
             homeAddress: user.homeAddress,
-            favouriteFacility: {},
+            favouriteFacility: user.favouriteFacility,
             token: generateToken(user._id),
         });
     } else {
@@ -108,10 +109,52 @@ const deleteUser = asyncHandler(async (req, res) => {
 });
 
 
+const setFavourite = asyncHandler(async (req, res) => {
+    const { userId, facility } = req.body;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        user.favouriteFacility = facility;
+        await user.save();
+
+        res.json({ favouriteFacility: user.favouriteFacility });
+    } catch (error) {
+        console.error('Error setting favourite facility:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+const removeFavourite = asyncHandler(async (req, res) => {
+    const { userId } = req.body;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        user.favouriteFacility = null;
+        await user.save();
+
+        res.json({ favouriteFacility: user.favouriteFacility });
+    } catch (error) {
+        console.error('Error removing favourite facility:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
 module.exports = {
     registerUser,
     authUser,
     changePassword,
     updateHomeAddress,
-    deleteUser
+    deleteUser,
+    addFavourite: setFavourite,
+    removeFavourite
 };

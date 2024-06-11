@@ -95,7 +95,11 @@ const Login = ({ setUser }) => {
             <ErrorMessage error={error} />
             <button type="submit">Log In</button>
             <div className="login-signup-container">
-                Or <Link to="/register" className="login-signup-link">Sign Up</Link> if you are not a member yet.
+                Or <Link
+                to="/register"
+                className="login-signup-link">
+                Sign Up
+            </Link> if you are not a member yet.
             </div>
         </form>
     );

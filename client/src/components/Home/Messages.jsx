@@ -5,11 +5,17 @@ import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import '../../styles/Error.css';
 
 
-const Messages = ({ error, message }) => (
+const Messages = ({
+                      error,
+                      message
+}) => (
     <>
         {error && (
             <div className="home-message">
-                <Alert variant="filled" severity="error">
+                <Alert
+                    variant="filled"
+                    severity="error"
+                >
                     {error}
                 </Alert>
             </div>
@@ -17,7 +23,10 @@ const Messages = ({ error, message }) => (
         {message && (
             <div className="home-message">
                 <Alert
-                    icon={<CheckBoxOutlinedIcon fontSize="inherit" sx={{ color: grey[100] }} />}
+                    icon={<CheckBoxOutlinedIcon
+                        fontSize="inherit"
+                        sx={{ color: grey[100] }}
+                    />}
                     sx={{
                         color: grey[100],
                         borderRadius: '4px',

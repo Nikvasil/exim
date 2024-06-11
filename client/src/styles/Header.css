@@ -9,13 +9,13 @@ header, .header-container {
 }
 
 header {
-    border-bottom: solid 0.0556vh #333333; /* 1px */
+    border-bottom: solid 0.0556vh #333333;
     position: fixed;
     top: 0;
     z-index: 1000;
     background-color: #242424;
-    padding: 0.5556vh 0; /* 6px */
-    transition: top 0.3s ease-in-out; /* Smooth transition for showing/hiding */
+    padding: 0.5556vh 0;
+    transition: top 0.3s ease-in-out;
 }
 
 header.show {
@@ -23,7 +23,7 @@ header.show {
 }
 
 header.hide {
-    top: -10vh; /* Adjust this value to hide the header completely */
+    top: -10vh;
 }
 
 header a {
@@ -40,7 +40,7 @@ header a {
 
 .header-logo {
     font-family: "Linux Libertine G", serif;
-    font-size: 5vh; /* 40px */
+    font-size: 5vh;
 }
 
 .header-logo:hover {
@@ -49,16 +49,16 @@ header a {
 }
 
 .header-links {
-    gap: 1vh; /* 10px */
-    margin: 1.0185vh; /* 11px */
+    gap: 1vh;
+    margin: 1.0185vh;
 }
 
 .header-button-contained, .header-button-outlined {
-    border: 0.101vh solid white; /* 2px */
+    border: 0.101vh solid white;
     display: inline-block;
-    padding: 1.1111vh 2.2222vh; /* 6px 12px */
-    font-size: 2vh; /* 16px */
-    border-radius: 4px; /* 4px */
+    padding: 1.1111vh 2.2222vh;
+    font-size: 2vh;
+    border-radius: 4px;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
@@ -86,14 +86,14 @@ header a {
 }
 
 .header-account {
-    padding: 0.2778vh; /* 3px */
+    padding: 0.2778vh;
     vertical-align: middle;
 }
 
 .header-account:hover {
     cursor: pointer;
     background-color: #333333;
-    border-radius: 5px; /* 5px */
+    border-radius: 5px;
 }
 
 .header-account-username {
@@ -116,7 +116,7 @@ header a {
     }
 
     .header-left, .header-right {
-        margin: 1.0185vh 0; /* 10px */
+        margin: 1.0185vh 0;
     }
 }
 

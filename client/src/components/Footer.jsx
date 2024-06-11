@@ -13,13 +13,15 @@ const Footer = () => {
                     <p>
                         <PlaceIcon
                             fontSize="small"
-                            className="footer-icon"/>
+                            className="footer-icon"
+                        />
                         Str. der Nationen 62, 09111 Chemnitz
                     </p>
                     <p>
                         <EmailOutlinedIcon
                             fontSize="small"
-                            className="footer-icon"/>
+                            className="footer-icon"
+                        />
                         mykyta.vasyliev@s2022.tu-chemnitz.de
                     </p>
                 </div>

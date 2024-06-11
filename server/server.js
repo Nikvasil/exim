@@ -32,14 +32,14 @@ app.use(cors({
 }));
 
 
-app.use('/api/users', userRoutes); // User routes
+app.use('/api/users', userRoutes);
 app.use('/api/kindergarten', kindergartenRoutes);
 app.use('/api/schools', schoolRoutes);
 app.use('/api/social-child-projects', socialChildProjectRoutes);
 app.use('/api/social-teenager-projects', socialTeenagerProjectRoutes);
 
 
-cron.schedule('*/10 * * * *', () => {
+cron.schedule('0 */12 * * *', () => {
     updateData();
 });
 
@@ -47,4 +47,3 @@ cron.schedule('*/10 * * * *', () => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-

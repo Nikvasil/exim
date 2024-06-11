@@ -5,7 +5,10 @@ import { styled } from '@mui/material/styles';
 
 
 const StyledTooltip = styled(({ className, ...props }) => (
-    <Tooltip {...props} classes={{ popper: className }} />
+    <Tooltip
+        {...props}
+        classes={{ popper: className }}
+    />
 ))`
     & .MuiTooltip-tooltip {
         font-size: 2.2vh;
@@ -20,8 +23,15 @@ const StyledTooltip = styled(({ className, ...props }) => (
 `;
 
 const TooltipComponent = ({ title }) => (
-    <StyledTooltip arrow placement="right-start" title={title}>
-        <HelpOutlineIcon sx={{ fontSize: "2.6vh" }} className="password-tooltip" />
+    <StyledTooltip
+        arrow
+        placement="right-start"
+        title={title}
+    >
+        <HelpOutlineIcon
+            sx={{ fontSize: "2.6vh" }}
+            className="password-tooltip"
+        />
     </StyledTooltip>
 );
 

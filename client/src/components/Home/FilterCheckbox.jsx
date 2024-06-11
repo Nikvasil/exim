@@ -4,7 +4,12 @@ import { grey } from '@mui/material/colors';
 import '../../styles/Form.css';
 
 
-const FilterCheckbox = ({ checkboxes, handleCheckboxChange, handleSelectAll, selectAll }) => (
+const FilterCheckbox = ({
+                            checkboxes,
+                            handleCheckboxChange,
+                            handleSelectAll,
+                            selectAll
+}) => (
     <div className="home-filter-container">
         <div className="home-filter-checkbox-container">
             <Checkbox
@@ -20,7 +25,10 @@ const FilterCheckbox = ({ checkboxes, handleCheckboxChange, handleSelectAll, sel
             Select All
         </div>
         {Object.keys(checkboxes).map((key) => (
-            <div className="home-filter-checkbox-container" key={key}>
+            <div
+                className="home-filter-checkbox-container"
+                key={key}
+            >
                 <Checkbox
                     name={key}
                     onChange={handleCheckboxChange}

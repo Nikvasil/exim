@@ -4,6 +4,7 @@ import kindergartenIconUrl from '../../assets/kindergarten-icon.png';
 import socialChildIconUrl from '../../assets/social-child-icon.png';
 import socialTeenagerIconUrl from '../../assets/social-teenager-icon.png';
 import homeIconUrl from '../../assets/home-icon.png';
+import favouriteIconUrl from '../../assets/favourite-facility-icon.png'
 
 
 const icons = {
@@ -37,6 +38,13 @@ const icons = {
     }),
     homeAddress: L.icon({
         iconUrl: homeIconUrl,
+        iconSize: [40, 40],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    }),
+    favouriteFacility: L.icon({
+        iconUrl: favouriteIconUrl,
         iconSize: [40, 40],
         iconAnchor: [12, 41],
         popupAnchor: [1, -34],

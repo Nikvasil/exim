@@ -56,6 +56,7 @@ const Register = ({ setUser }) => {
         try {
             const response = await axios.post('/api/users/register', formData);
             setUser(response.data);
+            localStorage.setItem('user', JSON.stringify(response.data));
             navigate('/');
         } catch (error) {
             if (error.response && error.response.status === 400 && error.response.data.message === 'User already exists') {
@@ -95,12 +96,12 @@ const Register = ({ setUser }) => {
                 <TooltipComponent
                     arrow
                     placement="right-start"
-                    title="Make sure your password is at least 8 characters long and contains an uppercase letter, a lowercase letter, a special character, and a number."
-                >
+                    title="Make sure your password is at least 8 characters long and contains an uppercase letter, a lowercase letter, a special character, and a number.">
                     <HelpOutlineIcon
                         sx={{ fontSize: "2.6vh" }}
                         fontSize="small"
-                        className="password-tooltip" />
+                        className="password-tooltip"
+                    />
                 </TooltipComponent>
             </div>
             <div className="password-container">

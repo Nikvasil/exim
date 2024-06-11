@@ -7,24 +7,41 @@ import TooltipComponent from '../Password/TooltipComponent';
 import '../../styles/Form.css';
 
 
-const AddressForm = ({ user, isEditing, homeAddress, handleChange, handleSubmit, setIsEditing, oldHomeAddress, setOldHomeAddress }) => (
+const AddressForm = ({
+                         user,
+                         isEditing,
+                         homeAddress,
+                         handleChange,
+                         handleSubmit,
+                         setIsEditing,
+                         oldHomeAddress,
+                         setOldHomeAddress,
+                         setHomeAddress
+}) => (
     <div className="home-address-container">
         {!user ? (
             <div>
-                <HomeOutlinedIcon sx={{ fontSize: "3.2vh" }} className="home-icon" />
-                <Link to="/register" className="home-link">
+                <HomeOutlinedIcon
+                    sx={{ fontSize: "3.2vh" }}
+                    className="home-icon"
+                />
+                <Link
+                    to="/register"
+                    className="home-link">
                     Sign Up
-                </Link>{' '}
-                or{' '}
-                <Link to="/login" className="home-link">
+                </Link> or <Link
+                    to="/login"
+                      className="home-link">
                     Log In
-                </Link>{' '}
-                to add your home address
+                </Link> to add your home address
             </div>
         ) : (
             !user.homeAddress || isEditing ? (
                 <div>
-                    <HomeOutlinedIcon sx={{ fontSize: "3.2vh" }} className="home-icon" />
+                    <HomeOutlinedIcon
+                        sx={{ fontSize: "3.2vh" }}
+                        className="home-icon"
+                    />
                     Add your home address:
                     <input
                         className="home-address-input"
@@ -36,28 +53,46 @@ const AddressForm = ({ user, isEditing, homeAddress, handleChange, handleSubmit,
                         onChange={handleChange}
                         required
                     />
-                    <button type="submit" className="home-address-button" onClick={handleSubmit}>
+                    <button
+                        type="submit"
+                        className="home-address-button"
+                        onClick={handleSubmit}
+                    >
                         Add
                     </button>
-                    <button type="button" className="home-address-button" onClick={() => setIsEditing(!isEditing)}>
+                    <button
+                        type="button"
+                            className="home-address-button"
+                        onClick={() => setIsEditing(!isEditing)}
+                    >
                         X
                     </button>
-                    <TooltipComponent arrow placement="right" title="Make sure you have entered a real existing address.">
-                        <HelpOutlineIcon sx={{ fontSize: "2.6vh" }} className="home-tooltip" />
+                    <TooltipComponent
+                        arrow
+                        placement="right"
+                        title="Make sure you have entered a real existing address."
+                    >
+                        <HelpOutlineIcon
+                            sx={{ fontSize: "2.6vh" }}
+                            className="home-tooltip"
+                        />
                     </TooltipComponent>
                 </div>
             ) : (
                 <div>
-                    <HomeOutlinedIcon sx={{ fontSize: "3.2vh" }} className="home-icon" />
+                    <HomeOutlinedIcon
+                        sx={{ fontSize: "3.2vh" }}
+                        className="home-icon"
+                    />
                     Your home address is {user.homeAddress}
                     <button
                         type="button"
                         className="home-address-edit-button"
                         onClick={() => {
                             setOldHomeAddress(user.homeAddress);
+                            setHomeAddress(user.homeAddress)
                             setIsEditing(!isEditing);
-                        }}
-                    >
+                        }}>
                         <EditOutlinedIcon sx={{ fontSize: "2.2vh" }} />
                     </button>
                 </div>

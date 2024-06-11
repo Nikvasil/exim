@@ -5,14 +5,14 @@ footer, .footer-container {
 
 footer {
     color: white;
-    padding: 0.5556vh 0; /* 6px */
+    padding: 0.5556vh 0;
     position: absolute;
     width: 100%;
-    border-top: solid 1px #333333; /* 1px */
+    border-top: solid 0.0556vh #333333;
 }
 
 .footer-container {
-    max-width: 60vw; /* 1200px */
+    max-width: 60vw;
     width: 100%;
     gap: 8vh;
 }
@@ -23,9 +23,9 @@ footer {
 }
 
 .footer-icon {
-    padding-right: 0.5556vh; /* 10px */
+    padding-right: 0.5556vh;
     vertical-align: middle;
-    padding-bottom: 0.1852vh; /* 2px */
+    padding-bottom: 0.1852vh;
 }
 
 @media (max-width: 768px) {
@@ -35,6 +35,6 @@ footer {
     }
 
     .footer-column {
-        margin: 1.0185vh 0; /* 10px */
+        margin: 1.0185vh 0;
     }
 }

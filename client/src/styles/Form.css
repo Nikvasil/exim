@@ -1,7 +1,7 @@
 form {
     display: flex;
     flex-direction: column;
-    width: 25.63vw; /* 360px */
+    width: 25.63vw;
     margin: 0 auto;
 }
 
@@ -10,29 +10,26 @@ form label {
 }
 
 form input {
-    margin: 1.1111vh 0; /* 12px */
-    padding: 0.9259vh; /* 10px */
-}
-
-form input {
-    font-size: 2vh; /* 14px */
+    margin: 1.1111vh 0;
+    padding: 0.9259vh;
+    font-size: 2vh;
     width: 100%;
     box-sizing: border-box;
 }
 
 form button {
     font-weight: bold;
-    margin: 1.1111vh 0; /* 12px */
-    padding: 1.1vh; /* 10px */
-    font-size: 2.2vh; /* 16px */
+    margin: 1.1111vh 0;
+    padding: 1.1vh;
+    font-size: 2.2vh;
     cursor: pointer;
     display: inline-block;
-    border-radius: 4px; /* 4px */
+    border-radius: 4px;
     text-align: center;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     background-color: transparent;
-    border: 2px solid white; /* 2px */
+    border: 0.3vh solid white;
 }
 
 form button:hover {
@@ -44,11 +41,11 @@ form button:hover {
 @media (max-width: 768px) {
     form {
         width: 70%;
-        padding: 0 1.0101vw; /* 20px */
+        padding: 0 1.0101vw;
     }
 
     form input, form button {
-        margin: 1.5vh 0; /* 12px */
+        margin: 1.5vh 0;
     }
 
     form label {

@@ -6,7 +6,10 @@ import HeaderMenu from './HeaderMenu';
 import useScrollHandler from './useScrollHandler';
 
 
-const Header = ({ user, onLogout }) => {
+const Header = ({
+                    user,
+                    onLogout
+}) => {
     const [open, setOpen] = useState(false);
     const scrollUp = useScrollHandler();
     const anchorRef = useRef(null);
@@ -44,13 +47,28 @@ const Header = ({ user, onLogout }) => {
         <header className={scrollUp ? 'show' : 'hide'}>
             <div className="header-container">
                 <div className="header-left">
-                    <Link to="/" className="header-logo">exim</Link>
+                    <Link
+                        to="/"
+                        className="header-logo"
+                    >
+                        exim
+                    </Link>
                 </div>
                 <div className="header-right">
                     {!user ? (
                         <div className="header-links">
-                            <Link to="/register" className="header-button-contained">Sign Up</Link>
-                            <Link to="/login" className="header-button-outlined">Log In</Link>
+                            <Link
+                                to="/register"
+                                className="header-button-contained"
+                            >
+                                Sign Up
+                            </Link>
+                            <Link
+                                to="/login"
+                                className="header-button-outlined"
+                            >
+                                Log In
+                            </Link>
                         </div>
                     ) : (
                         <div className="header-account">

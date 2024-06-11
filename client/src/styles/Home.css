@@ -23,8 +23,8 @@
 }
 
 .home-address-container {
-    padding: 2.9629vh 0; /* 32px */
-    font-size: 2.5vh; /* 18px */
+    padding: 2.9629vh 0;
+    font-size: 2.5vh;
 }
 
 .home-icon, .home-tooltip {
@@ -32,17 +32,17 @@
 }
 
 .home-icon {
-    padding-right: 0.5556vh; /* 10px */
-    padding-bottom: 0.5556vh; /* 6px */
+    padding-right: 0.5556vh;
+    padding-bottom: 0.5556vh;
 }
 
 .home-address-input, .home-address-button {
-    padding: 0.5556vh; /* 6px */
-    font-size: 2.2vh; /* 16px */
+    padding: 0.5556vh;
+    font-size: 2.2vh;
 }
 
 .home-address-input {
-    margin: 0 0.7407vh; /* 8px */
+    margin: 0 0.7407vh;
     box-sizing: border-box;
 }
 
@@ -50,12 +50,12 @@
     margin: 0 0.4vh;
     cursor: pointer;
     display: inline-block;
-    border-radius: 4px; /* 4px */
+    border-radius: 4px;
     text-align: center;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     background-color: transparent;
-    border: 2px solid white; /* 2px */
+    border: 0.3vh solid white;
 }
 
 .home-address-button:hover {
@@ -65,8 +65,8 @@
 }
 
 .home-address-edit-button {
-    margin: 0 1.2963vh; /* 14px */
-    padding: 0.3704vh; /* 4px */
+    margin: 0 1.2963vh;
+    padding: 0.3704vh;
 }
 
 .home-address-edit-button:hover {
@@ -76,24 +76,24 @@
 }
 
 .home-tooltip {
-    margin-left: 0.7407vh; /* 8px */
-    padding: 0.1852vh; /* 2px */
+    margin-left: 0.7407vh;
+    padding: 0.1852vh;
 }
 
 .home-tooltip:hover {
     cursor: pointer;
     background-color: #3D3D3D;
-    border-radius: 12px; /* 12px */
+    border-radius: 12px;
 }
 
 .home-filter-container {
-    padding: 1.6667vh 0; /* 18px */
+    padding: 1.6667vh 0;
     background-color: #333333;
     font-size: 2.2vh;
 }
 
 .home-filter-checkbox-container {
-    margin: 0 1.4815vh; /* 16px */
+    margin: 0 1.4815vh;
 }
 
 .home-message {
@@ -102,9 +102,9 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
-    max-width: 30.3030vw; /* 600px */
+    max-width: 30.3030vw;
     margin: 0 auto;
-    padding: 0.9259vh; /* 10px */
+    padding: 0.9259vh;
     text-align: center;
     font-size: 2.2vh;
 }

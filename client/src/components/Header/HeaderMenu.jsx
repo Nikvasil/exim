@@ -4,7 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
-const HeaderMenu = ({ user, open, handleClose, handleListKeyDown, anchorRef, setOpen, onLogout }) => {
+const HeaderMenu = ({
+                        user,
+                        open,
+                        handleClose,
+                        handleListKeyDown,
+                        anchorRef,
+                        setOpen,
+                        onLogout
+}) => {
     const navigate = useNavigate();
 
     const handleChangePassword = () => {
@@ -39,21 +47,63 @@ const HeaderMenu = ({ user, open, handleClose, handleListKeyDown, anchorRef, set
     };
 
     return (
-        <Popper open={open} anchorEl={anchorRef.current} role={undefined} placement="bottom" transition disablePortal>
+        <Popper
+            open={open}
+            anchorEl={anchorRef.current}
+            role={undefined}
+            placement="bottom"
+            transition disablePortal
+        >
             {({ TransitionProps, placement }) => (
-                <Grow {...TransitionProps} style={{ transformOrigin: placement === 'bottom-end' }}>
-                    <Paper sx={{ marginTop: '0.5vh', bgcolor: '#4D4D4D', color: 'white' }}>
+                <Grow
+                    {...TransitionProps}
+                    style={{ transformOrigin: placement === 'bottom-end' }}
+                >
+                    <Paper sx={{
+                        marginTop: '0.5vh',
+                        bgcolor: '#4D4D4D',
+                        color: 'white'
+                    }}>
                         <ClickAwayListener onClickAway={handleClose}>
-                            <MenuList autoFocusItem={open} id="composition-menu" aria-labelledby="composition-button" onKeyDown={handleListKeyDown}>
+                            <MenuList autoFocusItem={open}
+                                      id="composition-menu"
+                                      aria-labelledby="composition-button"
+                                      onKeyDown={handleListKeyDown}
+                            >
                                 <div className="header-account-username">Hi, {user.username}!</div>
                                 <div className="header-account-divider" />
-                                <MenuItem sx={{ fontFamily: '"Linux Libertine G", serif', borderRadius: '4px', padding: '1.4vh', margin: '0.5vh' }} onClick={handleChangePassword}>
+                                <MenuItem
+                                    sx={{
+                                    fontFamily: '"Linux Libertine G", serif',
+                                    borderRadius: '4px',
+                                    padding: '1.4vh',
+                                    margin: '0.5vh' }}
+                                          onClick={handleChangePassword}
+                                >
                                     Change Password
                                 </MenuItem>
-                                <MenuItem sx={{ fontFamily: '"Linux Libertine G", serif', borderRadius: '4px', padding: '1.4vh', margin: '0.5vh' }} onClick={handleLogout}>
+                                <MenuItem
+                                    sx={{
+                                        fontFamily: '"Linux Libertine G", serif',
+                                        borderRadius: '4px',
+                                        padding: '1.4vh',
+                                        margin: '0.5vh' }}
+                                    onClick={handleLogout}
+                                >
                                     Log Out
                                 </MenuItem>
-                                <MenuItem className="header-menu-item" sx={{ '&:hover': { bgcolor: '#A81700' }, borderRadius: '4px', bgcolor: '#C91C00', fontFamily: '"Linux Libertine G", serif', padding: '1.4vh', marginTop: '0.5vh', marginLeft: '0.5vh', marginRight: '0.5vh' }} onClick={handleDelete}>
+                                <MenuItem
+                                    className="header-menu-item"
+                                    sx={{
+                                        '&:hover': { bgcolor: '#A81700' },
+                                        borderRadius: '4px',
+                                        bgcolor: '#C91C00',
+                                        fontFamily: '"Linux Libertine G", serif',
+                                        padding: '1.4vh', marginTop: '0.5vh',
+                                        marginLeft: '0.5vh',
+                                        marginRight: '0.5vh' }}
+                                    onClick={handleDelete}
+                                >
                                     Delete
                                 </MenuItem>
                             </MenuList>
