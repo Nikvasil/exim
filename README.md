@@ -7,6 +7,8 @@
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [API Documentation](#api-documentation)
+- [Contributing](#contributing)
+- [License](#license)
 - [Contact](#contact)
   
 ## Overview
@@ -64,7 +66,17 @@ they are located, and how they can be reached is therefore a crucial decision cr
 
 ## API Documentation
 
+## Contributing
 
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
