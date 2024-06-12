@@ -229,10 +229,10 @@ This API provides endpoints for user management and facility information, includ
 
 ### Facility categories:
 
-- Kindergartens
-- Schools
-- Social Child Projects
-- Social Young Projects
+- kindergartens
+- schools
+- social-child-projects
+- social-young-projects
 
 ### Get `facility_category`
 
