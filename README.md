@@ -234,7 +234,7 @@ This API provides endpoints for user management and facility information, includ
 - social-child-projects
 - social-young-projects
 
-### Get `facility_category`
+### Get `{facility_category}`
 
 **Endpoint:** `/api/{facility_category}`
 
