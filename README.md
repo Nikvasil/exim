@@ -227,6 +227,13 @@ This API provides endpoints for user management and facility information, includ
 
 ### *Facility Information Endpoints*
 
+### Facility categories:
+
+- Kindergartens
+- Schools
+- Social Child Projects
+- Social Young Projects
+
 ### Get `facility_category`
 
 **Endpoint:** `/api/facility_category`
@@ -251,13 +258,6 @@ This API provides endpoints for user management and facility information, includ
 
 - `200 OK`: List of `facility_category` retrieved successfully.
 - `400 Not Found`: `facility_category` not found.
-
-### Facility categories:
-
-- Kindergartens
-- Schools
-- Social Child Projects
-- Social Young Projects
 
 ## Contributing
 
