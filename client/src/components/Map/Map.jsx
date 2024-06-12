@@ -65,7 +65,7 @@ const Map = ({
                     <p><b>Category:</b> {facility.category.charAt(0).toUpperCase() +
                         facility.category.slice(1).replace(/([A-Z])/g, ' $1').replaceAll("-", " ")}</p>
                     <p><b>Address:</b> {facility.STRASSE}</p>
-                    <p><b>PLZ:</b> {`${facility.PLZ} ${facility.ORT}`}</p>
+                    <p><b>PLZ:</b> {`${String(facility.PLZ).padStart(5, '0')} ${facility.ORT}`}</p>
                     <p><b>Phone:</b> {facility.TELEFON}</p>
                     {facility.EMAIL && <p><b>Email:</b> {facility.EMAIL}</p>}
                     {facility.FAX && <p><b>Fax:</b> {facility.FAX}</p>}
