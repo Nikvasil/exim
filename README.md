@@ -66,6 +66,199 @@ they are located, and how they can be reached is therefore a crucial decision cr
 
 ## API Documentation
 
+This API provides endpoints for user management and facility information, including registration, authentication, password change, home address update, favourite facility management, and CRUD operations on various facilities.
+
+### *User Management Endpoints*
+
+### Register User
+
+**Endpoint:** `/api/users/register`
+
+**Method:** `POST`
+
+**Description:** Registers a new user.
+
+**Request Body:**
+```json
+{
+  "username": "string",
+  "email": "string",
+  "password": "string"
+}
+```
+
+**Responses:**
+
+- `201 Created`: User registered successfully.
+- `400 Bad Request`: Invalid input or user already exists.
+
+### Authenticate User
+
+**Endpoint:** `/api/users/login`
+
+**Method:** `POST`
+
+**Description:** Authenticates a user and returns a JWT token.
+
+**Request Body:**
+```json
+{
+  "identifier": "string",  
+  "password": "string"
+}
+```
+
+**Responses:**
+
+- `200 OK`: User authenticated successfully.
+- `401 Unauthorized`: Invalid credentials.
+
+### Change Password
+
+**Endpoint:** `/api/users/change-password`
+
+**Method:** `POST`
+
+**Description:** Changes the password for the authenticated user.
+
+**Request Body:**
+```json
+{
+  "userId": "string",
+  "currentPassword": "string",
+  "newPassword": "string"
+}
+```
+
+**Headers:** `Authorization: Bearer <token>`
+
+**Responses:**
+
+- `200 OK`: Password changed successfully.
+- `400 Bad Request`: Invalid input.
+- `401 Unauthorized`: Invalid token or user not authenticated.
+
+### Update Home Address
+
+**Endpoint:** `/api/users/update-home-address`
+
+**Method:** `POST`
+
+**Description:** Updates the home address for the authenticated user.
+
+**Request Body:**
+```json
+{
+  "userId": "string",
+  "homeAddress": "string"
+}
+```
+
+**Headers:** `Authorization: Bearer <token>`
+
+**Responses:**
+
+- `200 OK`: Home address updated successfully.
+- `400 Bad Request`: Invalid input.
+- `401 Unauthorized`: Invalid token or user not authenticated.
+
+### Set Favourite Facility
+
+**Endpoint:** `/api/users/set-favourite`
+
+**Method:** `POST`
+
+**Description:** Sets a favourite facility for the authenticated user.
+
+**Request Body:**
+```json
+{
+  "userId": "string",
+  "facilityId": "string"
+}
+```
+
+**Headers:** `Authorization: Bearer <token>`
+
+**Responses:**
+
+- `200 OK`: Favourite facility set successfully.
+- `400 Bad Request`: Invalid input.
+- `401 Unauthorized`: Invalid token or user not authenticated.
+
+### Remove Favourite Facility
+
+**Endpoint:** `/api/users/remove-favourite`
+
+**Method:** `POST`
+
+**Description:** Removes a favourite facility for the authenticated user.
+
+**Request Body:**
+```json
+{
+  "userId": "string",
+  "facilityId": "string"
+}
+```
+
+**Headers:** `Authorization: Bearer <token>`
+
+**Responses:**
+
+- `200 OK`: Favourite facility removed successfully.
+- `400 Bad Request`: Invalid input.
+- `401 Unauthorized`: Invalid token or user not authenticated.
+
+### Delete User
+
+**Endpoint:** `/api/users/:id`
+
+**Method:** `DELETE`
+
+**Description:** Deletes the authenticated user.
+
+**Headers:** `Authorization: Bearer <token>`
+
+**Responses:**
+
+- `200 OK`: User deleted successfully.
+- `401 Unauthorized`: Invalid token or user not authenticated.
+
+### *Facility Information Endpoints*
+
+### Get `facility_category`
+
+**Endpoint:** `/api/facility_category`
+
+**Method:** `GET`
+
+**Description:** Retrieves a list of facilitiess.
+
+**Responses:**
+
+- `200 OK`: List of `facility_category` retrieved successfully.
+
+### Get `facility_category` by ID
+
+**Endpoint:** `/api/facility_category/:id`
+
+**Method:** `GET`
+
+**Description:** Retrieves a facility by its ID.
+
+**Responses:**
+
+- `200 OK`: List of `facility_category` retrieved successfully.
+- `400 Not Found`: `facility_category` not found.
+
+### Facility categories:
+
+- Kindergartens
+- Schools
+- Social Child Projects
+- Social Young Projects
+
 ## Contributing
 
 1. Fork the repository.
