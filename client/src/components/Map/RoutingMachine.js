@@ -10,6 +10,7 @@ const RoutingMachine = ({
                             end
 }) => {
     const map = useMap();
+    const graphHopperApiKey = import.meta.env.VITE_GRAPH_HOPPER_API_KEY;
 
     useEffect(() => {
         if (!map) return;
@@ -19,7 +20,7 @@ const RoutingMachine = ({
                 L.latLng(start[0], start[1]),
                 L.latLng(end[0], end[1])
             ],
-            router: L.Routing.graphHopper('da6f61f1-ce45-468f-b402-8cad4a75befa'),
+            router: L.Routing.graphHopper(graphHopperApiKey),
             routeWhileDragging: true,
             addWaypoints: false
         }).addTo(map);

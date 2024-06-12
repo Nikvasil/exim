@@ -5,11 +5,9 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import '../../styles/Map.css';
 import icons from './icons';
-import formattedDate from './formatDate';
 import RoutingMachine from './RoutingMachine';
 import CenterMap from './CenterMap';
-import FavouriteFacility from './FavouriteFacility.jsx';
-
+import PopupContent from './PopupContent.jsx';
 
 const Map = ({
                  user,
@@ -20,14 +18,10 @@ const Map = ({
                  setSelectedFacility,
                  favouriteFacility,
                  setFavouriteFacility
-}) => {
+             }) => {
     const [facilities, setFacilities] = useState([]);
     const [showRoute, setShowRoute] = useState(false);
     const [showDetails, setShowDetails] = useState(false);
-
-    const handleDetails = () => {
-        setShowDetails(!showDetails);
-    };
 
     const handleRoute = () => {
         setShowRoute(!showRoute);
@@ -49,58 +43,16 @@ const Map = ({
         fetchFacilities();
     }, [categories]);
 
-
-    const renderFacilityPopup = (facility) => (
-        <>
-            <h3>{facility.BEZEICHNUNG || facility.TRAEGER}</h3>
-            <div className="map-popup-divider"/>
-            <p
-                className="map-show-details"
-               onClick={handleDetails}
-            >
-                {!showDetails ? "Show more information" : "Show less information"}
-            </p>
-            {showDetails && (
-                <div>
-                    <p><b>Category:</b> {facility.category.charAt(0).toUpperCase() +
-                        facility.category.slice(1).replace(/([A-Z])/g, ' $1').replaceAll("-", " ")}</p>
-                    <p><b>Address:</b> {facility.STRASSE}</p>
-                    <p><b>PLZ:</b> {`${String(facility.PLZ).padStart(5, '0')} ${facility.ORT}`}</p>
-                    <p><b>Phone:</b> {facility.TELEFON}</p>
-                    {facility.EMAIL && <p><b>Email:</b> {facility.EMAIL}</p>}
-                    {facility.FAX && <p><b>Fax:</b> {facility.FAX}</p>}
-                    {facility.CreationDate && <p><b>Created:</b> {formattedDate(facility.CreationDate)} by {facility.Creator}</p>}
-                    {facility.EditDate && <p><b>Edited:</b> {formattedDate(facility.EditDate)} by {facility.Editor}</p>}
-                    <p><b>Longitude:</b> {facility.X}</p>
-                    <p><b>Latitude: </b> {facility.Y}</p>
-                </div>
-            )}
-            {user && (
-                <FavouriteFacility
-                    user={user}
-                    facility={facility}
-                    setUser={setUser}
-                    favouriteFacility={favouriteFacility}
-                    setFavouriteFacility={setFavouriteFacility}/>
-            )}
-            {user?.homeAddress && (
-                <div className="map-button-container">
-                    <button onClick={handleRoute}>
-                        {!showRoute ? "Show Route" : "Hide Route"}
-                    </button>
-                </div>
-            )}
-        </>
-    );
-
     return (
         <MapContainer
             center={[50.835, 12.929]}
             zoom={12}
-            className="map-container">
+            className="map-container"
+        >
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"/>
+                attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+            />
             {facilities
                 .filter(facility => !favouriteFacility || facility._id !== favouriteFacility._id)
                 .map((facility) => {
@@ -117,9 +69,20 @@ const Map = ({
                                     setShowDetails(false);
                                     setSelectedFacility(facility);
                                 },
-                            }}>
+                            }}
+                        >
                             <Popup eventHandlers={{ remove: () => setSelectedFacility(null) }}>
-                                {renderFacilityPopup(facility)}
+                                <PopupContent
+                                    facility={facility}
+                                    user={user}
+                                    setUser={setUser}
+                                    favouriteFacility={favouriteFacility}
+                                    setFavouriteFacility={setFavouriteFacility}
+                                    showDetails={showDetails}
+                                    setShowDetails={setShowDetails}
+                                    handleRoute={handleRoute}
+                                    showRoute={showRoute}
+                                />
                             </Popup>
                         </Marker>
                     );
@@ -128,7 +91,8 @@ const Map = ({
                 <Marker
                     key="homeAddress"
                     position={homeCoordinates}
-                    icon={icons.homeAddress}>
+                    icon={icons.homeAddress}
+                >
                     <Popup eventHandlers={{ remove: () => setSelectedFacility(null) }}>
                         <h3>Your Home</h3>
                         <p>{user?.homeAddress}</p>
@@ -148,9 +112,20 @@ const Map = ({
                             setShowDetails(false);
                             setSelectedFacility(favouriteFacility);
                         },
-                    }}>
+                    }}
+                >
                     <Popup eventHandlers={{ remove: () => setSelectedFacility(null) }}>
-                        {renderFacilityPopup(favouriteFacility)}
+                        <PopupContent
+                            facility={favouriteFacility}
+                            user={user}
+                            setUser={setUser}
+                            favouriteFacility={favouriteFacility}
+                            setFavouriteFacility={setFavouriteFacility}
+                            showDetails={showDetails}
+                            setShowDetails={setShowDetails}
+                            handleRoute={handleRoute}
+                            showRoute={showRoute}
+                        />
                     </Popup>
                 </Marker>
             )}
