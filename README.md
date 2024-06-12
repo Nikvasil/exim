@@ -41,12 +41,20 @@ they are located, and how they can be reached is therefore a crucial decision cr
 
 ### Installation Steps
 
-1. Clone the repository
-2. Navigate to the project directory
-3. Install the dependencies
-4. Create a `.env` file in the root directory and add your environment variables (e.g., database connection string, JWT secret).
-5. Start the development server
-6. Open your browser and navigate to `http://localhost:{your-port}` to view the application.
+1. Clone the repository: `git clone https://github.com/Nikvasil/exim.git`
+2. Navigate to the project directory: `cd exim`
+3. Install the dependencies: `npm install`
+4. Create a `.env` file in both server and client directories and add your environment variables:
+```\server\.env
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+```
+```\client\.env
+VITE_GRAPH_HOPPER_API_KEY=your_graph_hopper_api_key
+```
+5. Start the development server: `npm start`
+6. Open your browser and navigate to `http://localhost:5173` to view the application.
 
 ## Usage
 
@@ -227,9 +235,16 @@ This API provides endpoints for user management and facility information, includ
 
 ### *Facility Information Endpoints*
 
-### Get `facility_category`
+### Facility categories:
 
-**Endpoint:** `/api/facility_category`
+- kindergartens
+- schools
+- social-child-projects
+- social-young-projects
+
+### Get `{facility_category}`
+
+**Endpoint:** `/api/{facility_category}`
 
 **Method:** `GET`
 
@@ -237,11 +252,11 @@ This API provides endpoints for user management and facility information, includ
 
 **Responses:**
 
-- `200 OK`: List of `facility_category` retrieved successfully.
+- `200 OK`: List of `{facility_category}` retrieved successfully.
 
-### Get `facility_category` by ID
+### Get `{facility_category}` by ID
 
-**Endpoint:** `/api/facility_category/:id`
+**Endpoint:** `/api/{facility_category}/:id`
 
 **Method:** `GET`
 
@@ -249,15 +264,8 @@ This API provides endpoints for user management and facility information, includ
 
 **Responses:**
 
-- `200 OK`: List of `facility_category` retrieved successfully.
-- `400 Not Found`: `facility_category` not found.
-
-### Facility categories:
-
-- Kindergartens
-- Schools
-- Social Child Projects
-- Social Young Projects
+- `200 OK`: List of `{facility_category}` retrieved successfully.
+- `400 Not Found`: `{facility_category}` not found.
 
 ## Contributing
 
