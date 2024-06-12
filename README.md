@@ -236,7 +236,7 @@ This API provides endpoints for user management and facility information, includ
 
 ### Get `facility_category`
 
-**Endpoint:** `/api/facility_category`
+**Endpoint:** `/api/{facility_category}`
 
 **Method:** `GET`
 
@@ -244,11 +244,11 @@ This API provides endpoints for user management and facility information, includ
 
 **Responses:**
 
-- `200 OK`: List of `facility_category` retrieved successfully.
+- `200 OK`: List of `{facility_category}` retrieved successfully.
 
-### Get `facility_category` by ID
+### Get `{facility_category}` by ID
 
-**Endpoint:** `/api/facility_category/:id`
+**Endpoint:** `/api/{facility_category}/:id`
 
 **Method:** `GET`
 
@@ -256,8 +256,8 @@ This API provides endpoints for user management and facility information, includ
 
 **Responses:**
 
-- `200 OK`: List of `facility_category` retrieved successfully.
-- `400 Not Found`: `facility_category` not found.
+- `200 OK`: List of `{facility_category}` retrieved successfully.
+- `400 Not Found`: `{facility_category}` not found.
 
 ## Contributing
 
