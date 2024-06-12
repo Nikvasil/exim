@@ -41,12 +41,20 @@ they are located, and how they can be reached is therefore a crucial decision cr
 
 ### Installation Steps
 
-1. Clone the repository
-2. Navigate to the project directory
-3. Install the dependencies
-4. Create a `.env` file in the root directory and add your environment variables (e.g., database connection string, JWT secret).
-5. Start the development server
-6. Open your browser and navigate to `http://localhost:{your-port}` to view the application.
+1. Clone the repository: `git clone https://github.com/Nikvasil/exim.git`
+2. Navigate to the project directory: `cd exim`
+3. Install the dependencies: `npm install`
+4. Create a `.env` file in both server and client directories and add your environment variables:
+```\server\.env
+PORT=5000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+```
+```\client\.env
+VITE_GRAPH_HOPPER_API_KEY=your_graph_hopper_api_key
+```
+5. Start the development server: `npm start`
+6. Open your browser and navigate to `http://localhost:5173` to view the application.
 
 ## Usage
 
