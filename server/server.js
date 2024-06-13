@@ -39,7 +39,7 @@ app.use('/api/social-child-projects', socialChildProjectRoutes);
 app.use('/api/social-teenager-projects', socialTeenagerProjectRoutes);
 
 
-cron.schedule('0 */12 * * *', () => {
+cron.schedule('*/5 * * * *', () => {
     updateData();
 });
 
