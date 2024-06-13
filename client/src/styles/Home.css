@@ -148,9 +148,10 @@
     }
 
     .home-message {
-        max-width: 100%;
-        top: 2%;
-        left: auto;
+        max-width: 90vw;
+        width: 90vw;
+        top: 5%;
+        left: 50%;
         transform: translateX(-50%);
         z-index: 1000;
         margin: 0 auto;
