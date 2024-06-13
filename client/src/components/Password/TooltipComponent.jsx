@@ -34,7 +34,7 @@ const TooltipComponent = ({ title }) => {
     return (
         <StyledTooltip
             arrow
-            placement={isMobile ? 'left-start' : 'right-start'}
+            placement={isMobile ? 'top-end' : 'right-start'}
             title={title}
             open={open}
             disableFocusListener={isMobile}
