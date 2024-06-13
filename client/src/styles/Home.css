@@ -148,7 +148,15 @@
     }
 
     .home-success-message {
-        max-width: 75vw;
+        max-width: 100%;
+        top: 2%;
+        left: 0;
+        transform: translateX(-50%);
+        z-index: 1000;
+        margin: 0 auto;
+        padding: 0.9259vh;
+        text-align: center;
+        font-size: 2.2vh;
     }
 
     .home-address-button, .home-address-input {
