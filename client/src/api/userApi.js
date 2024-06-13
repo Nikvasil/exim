@@ -1,11 +1,11 @@
 import api from './axios';
 
 export const registerUser = async(formData) => {
-    return await api.post('/register', formData);
+    return await api.post('api/users/register', formData);
 }
 
 export const loginUser = async(formData) => {
-    return await api.post('/login', formData);
+    return await api.post('api/users/login', formData);
 }
 
 export const deleteUser = async(user) => {
