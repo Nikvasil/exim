@@ -59,15 +59,15 @@ function App() {
                             />
                             <Route
                                 path="/register"
-                                element={<Register setUser={setUser} />}
+                                element={!user ? <Register setUser={setUser} /> : <Navigate to="/" />}
                             />
                             <Route
                                 path="/login"
-                                element={<Login setUser={setUser} />}
+                                element={!user ? <Login setUser={setUser} /> : <Navigate to="/" />}
                             />
                             <Route
                                 path="/change-password"
-                                element={user ? <ChangePassword user={user} /> : <Navigate to="/login" />}
+                                element={user ? <ChangePassword user={user} /> : <Navigate to="/" />}
                             />
                         </Routes>
                     </div>
