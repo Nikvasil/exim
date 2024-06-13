@@ -1,7 +1,8 @@
-import React from 'react';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import Tooltip from '@mui/material/Tooltip';
+import React, { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
+import Tooltip from '@mui/material/Tooltip';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 const StyledTooltip = styled(({ className, ...props }) => (
@@ -22,18 +23,32 @@ const StyledTooltip = styled(({ className, ...props }) => (
     }
 `;
 
-const TooltipComponent = ({ title }) => (
-    <StyledTooltip
-        arrow
-        placement="right-start"
-        title={title}
-    >
-        <HelpOutlineIcon
-            sx={{ fontSize: "2.6vh" }}
-            className="password-tooltip"
-        />
-    </StyledTooltip>
-);
+const TooltipComponent = ({ title }) => {
+    const isMobile = useMediaQuery('(max-width:768px)');
+    const [open, setOpen] = useState(false);
+
+    const handleClick = () => {
+            setOpen(!open);
+    };
+
+    return (
+        <StyledTooltip
+            arrow
+            placement={isMobile ? 'left-start' : 'right-start'}
+            title={title}
+            open={open}
+            disableFocusListener={isMobile}
+            disableHoverListener={isMobile}
+            disableTouchListener={isMobile}
+        >
+            <HelpOutlineIcon
+                sx={{ fontSize: "2.6vh" }}
+                className="password-tooltip"
+                onClick={handleClick}
+            />
+        </StyledTooltip>
+    );
+};
 
 
 export default TooltipComponent;
