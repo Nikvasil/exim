@@ -5,10 +5,7 @@ import 'leaflet-routing-machine';
 import 'lrm-graphhopper';
 
 
-const RoutingMachine = ({
-                            start,
-                            end
-}) => {
+const RoutingMachine = ({ start, end }) => {
     const map = useMap();
     const graphHopperApiKey = import.meta.env.VITE_GRAPH_HOPPER_API_KEY;
 
@@ -22,7 +19,10 @@ const RoutingMachine = ({
             ],
             router: L.Routing.graphHopper(graphHopperApiKey),
             routeWhileDragging: true,
-            addWaypoints: false
+            addWaypoints: false,
+            createMarker: function() {
+                return null;
+            }
         }).addTo(map);
 
         return () => {
