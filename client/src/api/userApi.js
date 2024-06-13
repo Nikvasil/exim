@@ -29,7 +29,7 @@ export const changePassword = async(user, formData) => {
 }
 
 export const updateHomeAddress = async(user, homeAddress) => {
-    const response = await api.post('/api/users/update-home-address', {
+    return await api.post('/api/users/update-home-address', {
         userId: user._id,
         homeAddress,
     }, {
