@@ -16,13 +16,13 @@
     text-decoration: underline;
 }
 
-.home-address-container, .home-filter-container {
+.home-address-container, .home-address-edit-container, .home-filter-container {
     display: flex;
     flex: 1;
     justify-content: center;
 }
 
-.home-address-container {
+.home-address-container, .home-address-edit-container {
     padding: 2.9629vh 0;
     font-size: 2.5vh;
 }
@@ -127,8 +127,8 @@
         min-height: 100vh;
     }
 
-    .home-address-container {
-        width: 80%;
+    .home-address-container, .home-address-edit-container {
+        width: 100%;
         flex-direction: column;
         text-align: center;
     }

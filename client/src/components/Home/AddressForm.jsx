@@ -17,10 +17,9 @@ const AddressForm = ({
                          oldHomeAddress,
                          setOldHomeAddress,
                          setHomeAddress
-}) => (
-    <div className="home-address-container">
-        {!user ? (
-            <div>
+}) => (!user ? (
+            <div className="home-address-container">
+                <div>
                 <HomeOutlinedIcon
                     sx={{ fontSize: "3.2vh" }}
                     className="home-icon"
@@ -34,15 +33,19 @@ const AddressForm = ({
                       className="home-link">
                     Log In
                 </Link> to add your home address
+                </div>
             </div>
         ) : (
             !user.homeAddress || isEditing ? (
-                <div>
+                <div className="home-address-edit-container">
+                    <div>
                     <HomeOutlinedIcon
                         sx={{ fontSize: "3.2vh" }}
                         className="home-icon"
                     />
                     Add your home address:
+                        </div>
+                    <div>
                     <input
                         className="home-address-input"
                         type="text"
@@ -77,9 +80,11 @@ const AddressForm = ({
                             className="home-tooltip"
                         />
                     </TooltipComponent>
+                    </div>
                 </div>
             ) : (
-                <div>
+                <div className="home-address-container">
+                    <div>
                     <HomeOutlinedIcon
                         sx={{ fontSize: "3.2vh" }}
                         className="home-icon"
@@ -95,10 +100,10 @@ const AddressForm = ({
                         }}>
                         <EditOutlinedIcon sx={{ fontSize: "2.2vh" }} />
                     </button>
+                    </div>
                 </div>
             )
-        )}
-    </div>
+        )
 );
 
 
