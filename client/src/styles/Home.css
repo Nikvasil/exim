@@ -128,9 +128,13 @@
     }
 
     .home-address-container, .home-address-edit-container {
-        width: 100%;
+        width: 80%;
         flex-direction: column;
         text-align: center;
+    }
+
+    .home-address-edit-container {
+        width: 100%;
     }
 
     .home-filter-container {
