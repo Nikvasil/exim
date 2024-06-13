@@ -27,7 +27,7 @@ app.use(express.json());
 
 
 app.use(cors({
-    origin: 'https://exim-3uso.onrender.com/',
+    origin: 'https://exim-one.vercel.app',
     credentials: true,
 }));
 
