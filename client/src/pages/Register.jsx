@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import PasswordVisibilityToggle from '../components/Password/PasswordVisibilityToggle';
@@ -8,6 +7,8 @@ import TooltipComponent from '../components/Password/TooltipComponent';
 import '../styles/Password.css';
 import '../styles/Error.css';
 import '../styles/Form.css';
+import '../api/userApi.js';
+import {registerUser} from "../api/userApi.js";
 
 
 const Register = ({ setUser }) => {
@@ -54,7 +55,7 @@ const Register = ({ setUser }) => {
         }
 
         try {
-            const response = await axios.post('/api/users/register', formData);
+            const response = await registerUser(formData);
             setUser(response.data);
             localStorage.setItem('user', JSON.stringify(response.data));
             navigate('/');

@@ -1,7 +1,7 @@
 import React from 'react';
 import { MenuItem, MenuList, ClickAwayListener, Grow, Paper, Popper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import {deleteUser} from "../../api/userApi.js";
 
 
 const HeaderMenu = ({
@@ -32,11 +32,7 @@ const HeaderMenu = ({
         if (confirmDelete) {
             try {
                 await setOpen(false);
-                await axios.delete(`/api/users/${user._id}`, {
-                    headers: {
-                        Authorization: `Bearer ${user.token}`
-                    }
-                });
+                await deleteUser(user);
                 localStorage.removeItem('user');
                 onLogout();
                 navigate('/');

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import {setFavourite, removeFavourite} from "../../api/facilityApi.js";
 
 
 const FavouriteFacility = ({
@@ -13,13 +13,9 @@ const FavouriteFacility = ({
 }) => {
     const [hoverFavourite, setHoverFavourite] = useState(false);
 
-    const handleFavourite = async () => {
+    const handleSetFavourite = async () => {
         try {
-            const response = await axios.post('/api/users/set-favourite', { userId: user._id, facility }, {
-                headers: {
-                    Authorization: `Bearer ${user.token}`
-                }
-            });
+            const response = await setFavourite(user, facility);
 
             const newFavouriteFacility = response.data.favouriteFacility;
             setFavouriteFacility(newFavouriteFacility);
@@ -31,13 +27,9 @@ const FavouriteFacility = ({
         }
     };
 
-    const removeFavourite = async () => {
+    const handleRemoveFavourite = async () => {
         try {
-            const response = await axios.post('/api/users/remove-favourite', { userId: user._id}, {
-                headers: {
-                    Authorization: `Bearer ${user.token}`
-                }
-            });
+            await removeFavourite(user);
 
             setFavouriteFacility(null);
 
@@ -56,7 +48,7 @@ const FavouriteFacility = ({
         >
             {favouriteFacility && favouriteFacility._id === facility._id ? (
                 hoverFavourite ? (
-                    <StarBorderIcon onClick={removeFavourite} />
+                    <StarBorderIcon onClick={handleRemoveFavourite} />
                 ) : (
                     <StarIcon sx={{ color: "yellow" }} />
                 )
@@ -64,7 +56,7 @@ const FavouriteFacility = ({
                 hoverFavourite ? (
                     <StarIcon
                         sx={{ color: "yellow" }}
-                              onClick={handleFavourite}
+                              onClick={handleSetFavourite}
                     />
                 ) : (
                     <StarBorderIcon />

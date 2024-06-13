@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import PasswordVisibilityToggle from '../components/Password/PasswordVisibilityToggle';
 import TooltipComponent from '../components/Password/TooltipComponent';
@@ -7,6 +6,7 @@ import ErrorMessage from '../components/Password/ErrorMessage';
 import '../styles/Password.css';
 import '../styles/Error.css';
 import '../styles/Form.css';
+import {changePassword} from "../api/userApi.js";
 
 
 const ChangePassword = ({ user }) => {
@@ -39,15 +39,7 @@ const ChangePassword = ({ user }) => {
             return;
         }
         try {
-            const response = await axios.post('/api/users/change-password', {
-                userId: user._id,
-                currentPassword: formData.currentPassword,
-                newPassword: formData.newPassword,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${user.token}`
-                }
-            });
+            const response = await changePassword(user, formData);
             if (response.data.success) {
                 navigate('/?passwordChanged=true');
             } else {

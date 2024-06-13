@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import axios from 'axios';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import '../../styles/Map.css';
 import icons from './icons';
 import RoutingMachine from './RoutingMachine';
 import CenterMap from './CenterMap';
-import PopupContent from './PopupContent.jsx';
+import PopupContent from './PopupContent';
+import {getFacilities} from "../../api/facilityApi.js";
+
 
 const Map = ({
                  user,
@@ -30,9 +31,7 @@ const Map = ({
     useEffect(() => {
         const fetchFacilities = async () => {
             try {
-                const responses = await Promise.all(
-                    categories.map(category => axios.get(`/api/${category}`).then(res => res.data.map(item => ({ ...item, category }))))
-                );
+                const responses = await getFacilities(categories);
                 const allFacilities = responses.flatMap(response => response);
                 setFacilities(allFacilities);
             } catch (error) {

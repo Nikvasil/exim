@@ -1,12 +1,12 @@
 import L from 'leaflet';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 import Map from '../components/Map/Map.jsx';
 import AddressForm from '../components/Home/AddressForm';
 import Messages from '../components/Home/Messages';
 import FilterCheckbox from '../components/Home/FilterCheckbox';
 import '../styles/Home.css';
+import {updateHomeAddress} from "../api/userApi.js";
 
 
 const Home = ({
@@ -84,14 +84,7 @@ const Home = ({
             const coordinates = await getCoordinates(homeAddress);
             setHomeCoordinates([coordinates.lat, coordinates.lon]);
 
-            const response = await axios.post('/api/users/update-home-address', {
-                userId: user._id,
-                homeAddress,
-            }, {
-                headers: {
-                    Authorization: `Bearer ${user.token}`
-                }
-            });
+            const response = await updateHomeAddress(user, homeAddress);
 
             setUser((prevUser) => ({ ...prevUser, homeAddress: response.data.homeAddress }));
             setOldHomeAddress(response.data.homeAddress);

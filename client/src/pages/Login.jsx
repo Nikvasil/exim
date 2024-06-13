@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Checkbox from '@mui/material/Checkbox';
 import { grey } from '@mui/material/colors';
@@ -9,6 +8,7 @@ import '../styles/Password.css';
 import '../styles/Login.css';
 import '../styles/Error.css';
 import '../styles/Form.css';
+import {loginUser} from "../api/userApi.js";
 
 
 const Login = ({ setUser }) => {
@@ -38,7 +38,7 @@ const Login = ({ setUser }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/users/login', formData);
+            const response = await loginUser(formData);
             setUser(response.data);
             if (rememberMe) {
                 localStorage.setItem('user', JSON.stringify(response.data));
