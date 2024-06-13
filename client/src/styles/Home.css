@@ -150,6 +150,7 @@
     .home-message {
         max-width: 100%;
         top: 2%;
+        left: auto;
         transform: translateX(-50%);
         z-index: 1000;
         margin: 0 auto;
