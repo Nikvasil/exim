@@ -43,8 +43,8 @@ they are located, and how they can be reached is therefore a crucial decision cr
 
 1. Clone the repository: `git clone https://github.com/Nikvasil/exim.git`
 2. Navigate to the project directory: `cd exim`
-3. Install the dependencies: `npm install-all`
-4. Create `.env` files in both `/server` and `/client` directories and add your environment variables:
+3. Install the dependencies: `npm run install-all`
+4. Create `.env` files in both `server/` and `client/` directories and add your environment variables:
 
 `/server/.env`:
 ```\server\.env
@@ -57,7 +57,7 @@ JWT_SECRET=your_jwt_secret
 ```\client\.env
 VITE_GRAPH_HOPPER_API_KEY=your_graph_hopper_api_key
 ```
-5. To run a server and make API calls locally you should change `baseURL` property in `/client` and `origin` property in `/server`: 
+5. To run a server and make API calls locally you should change `baseURL` property in `client/` and `origin` property in `server/`: 
 
 `/client/src/api/axios.js`:
 ```
