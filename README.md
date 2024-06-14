@@ -87,10 +87,11 @@ VITE_GRAPH_HOPPER_API_KEY=your_graph_hopper_api_key
 
 - `MONGO_URI`: The connection string for your MongoDB database.
 - `JWT_SECRET`: The secret key used for JWT authentication.
+- `VITE_GRAPH_HOPPER_API_KEY`: The secret API key for a graph hooper routing machine.
 
 ## API Documentation
 
-This API provides endpoints for user management and facility information, including registration, authentication, password change, home address update, favourite facility management, and CRUD operations on various facilities.
+This API provides endpoints for user management and facility information, including registration, authentication, password change, home address update, favourite facility management, and read operations on various facilities.
 
 ### *User Management Endpoints*
 
