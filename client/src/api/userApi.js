@@ -9,7 +9,9 @@ export const registerUser = async(formData, setIsLoading) => {
 
 export const loginUser = async(formData, setIsLoading) => {
     setIsLoading(true);
-    return await api.post('api/users/login', formData);
+    const response = await api.post('api/users/login', formData);
+    setIsLoading(false);
+    return response;
 }
 
 export const deleteUser = async(user, setIsLoading) => {

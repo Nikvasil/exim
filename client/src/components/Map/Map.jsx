@@ -32,7 +32,7 @@ const Map = ({
     useEffect(() => {
         const fetchFacilities = async () => {
             try {
-                const responses = await getFacilities(categories, setIsLoading);
+                const responses = await getFacilities(categories);
                 const allFacilities = responses.flatMap(response => response);
                 setFacilities(allFacilities);
             } catch (error) {
