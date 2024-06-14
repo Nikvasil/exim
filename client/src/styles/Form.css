@@ -38,7 +38,7 @@ form button:hover {
     border-color: white;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 840px) {
     form {
         width: 70%;
         padding: 0 1.0101vw;

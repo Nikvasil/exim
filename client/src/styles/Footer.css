@@ -28,7 +28,7 @@ footer {
     padding-bottom: 0.1852vh;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 840px) {
     .footer-container {
         flex-direction: column;
         align-items: center;

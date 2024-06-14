@@ -116,7 +116,7 @@
     max-height: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 840px) {
     .home-container {
         margin-top: 12vh;
         flex: 1;

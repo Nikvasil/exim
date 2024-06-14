@@ -109,7 +109,7 @@ header a {
     margin: 0 10%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 840px) {
     .header-container {
         justify-content: space-between;
         padding: 0 4vh;

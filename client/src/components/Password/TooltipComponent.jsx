@@ -20,11 +20,15 @@ const StyledTooltip = styled(({ className, ...props }) => (
         background-color: #333333;
         border: white 1px solid;
         border-radius: 4px;
+
+        @media (max-width: 840px) {
+            max-width: 100%;
+        }
     }
 `;
 
 const TooltipComponent = ({ title }) => {
-    const isMobile = useMediaQuery('(max-width:768px)');
+    const isMobile = useMediaQuery('(max-width:840px)');
     const [open, setOpen] = useState(false);
 
     const handleClick = () => {
