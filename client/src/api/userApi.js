@@ -14,14 +14,12 @@ export const loginUser = async(formData, setIsLoading) => {
     return response;
 }
 
-export const deleteUser = async(user, setIsLoading) => {
-    setIsLoading(true);
+export const deleteUser = async(user) => {
     await api.delete(`/api/users/${user._id}`, {
         headers: {
             Authorization: `Bearer ${user.token}`
         }
     });
-    setIsLoading(false);
 }
 
 export const changePassword = async(user, formData, setIsLoading) => {
