@@ -15,7 +15,8 @@ const Home = ({
                   selectedFacility,
                   setSelectedFacility,
                   favouriteFacility,
-                  setFavouriteFacility
+                  setFavouriteFacility,
+                  setIsLoading
 }) => {
     const [message, setMessage] = useState('');
     const location = useLocation();
@@ -81,10 +82,12 @@ const Home = ({
         }
 
         try {
+            setIsLoading(true);
             const coordinates = await getCoordinates(homeAddress);
             setHomeCoordinates([coordinates.lat, coordinates.lon]);
 
             const response = await updateHomeAddress(user, homeAddress);
+            setIsLoading(false);
 
             setUser((prevUser) => ({ ...prevUser, homeAddress: response.data.homeAddress }));
             setOldHomeAddress(response.data.homeAddress);
@@ -106,7 +109,9 @@ const Home = ({
         const fetchHomeCoordinates = async () => {
             if (user && user.homeAddress) {
                 try {
+                    setIsLoading(true);
                     const coordinates = await getCoordinates(user.homeAddress);
+                    setIsLoading(false);
                     setError(null);
                     setHomeCoordinates([coordinates.lat, coordinates.lon]);
                 } catch (error) {
@@ -171,6 +176,7 @@ const Home = ({
                     setSelectedFacility={setSelectedFacility}
                     favouriteFacility={favouriteFacility}
                     setFavouriteFacility={setFavouriteFacility}
+                    setIsLoading={setIsLoading}
                 />
             </div>
         </div>

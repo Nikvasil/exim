@@ -9,13 +9,16 @@ const FavouriteFacility = ({
                                facility,
                                setUser,
                                favouriteFacility,
-                               setFavouriteFacility
+                               setFavouriteFacility,
+    setIsLoading
 }) => {
     const [hoverFavourite, setHoverFavourite] = useState(false);
 
     const handleSetFavourite = async () => {
         try {
+            setIsLoading(true);
             const response = await setFavourite(user, facility);
+            setIsLoading(false);
 
             const newFavouriteFacility = response.data.favouriteFacility;
             setFavouriteFacility(newFavouriteFacility);
@@ -29,7 +32,9 @@ const FavouriteFacility = ({
 
     const handleRemoveFavourite = async () => {
         try {
+            setIsLoading(true);
             await removeFavourite(user);
+            setIsLoading(false);
 
             setFavouriteFacility(null);
 

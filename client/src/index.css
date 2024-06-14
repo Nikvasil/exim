@@ -53,3 +53,10 @@ main {
   align-items: center;
   min-height: 100vh;
 }
+
+.loader-container {
+  text-align: center;
+  position: fixed;
+  top: 5%;
+  z-index: 1000;
+}

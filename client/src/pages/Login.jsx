@@ -11,7 +11,10 @@ import '../styles/Form.css';
 import {loginUser} from "../api/userApi.js";
 
 
-const Login = ({ setUser }) => {
+const Login = ({
+                   setUser,
+    setIsLoading
+               }) => {
     const [formData, setFormData] = useState({
         identifier: '',
         password: '',
@@ -38,7 +41,9 @@ const Login = ({ setUser }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            setIsLoading(true);
             const response = await loginUser(formData);
+            setIsLoading(false);
             setUser(response.data);
             if (rememberMe) {
                 localStorage.setItem('user', JSON.stringify(response.data));

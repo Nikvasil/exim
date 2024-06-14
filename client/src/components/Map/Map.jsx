@@ -18,7 +18,8 @@ const Map = ({
                  selectedFacility,
                  setSelectedFacility,
                  favouriteFacility,
-                 setFavouriteFacility
+                 setFavouriteFacility,
+                 setIsLoading
              }) => {
     const [facilities, setFacilities] = useState([]);
     const [showRoute, setShowRoute] = useState(false);
@@ -31,7 +32,9 @@ const Map = ({
     useEffect(() => {
         const fetchFacilities = async () => {
             try {
+                setIsLoading(true);
                 const responses = await getFacilities(categories);
+                setIsLoading(false);
                 const allFacilities = responses.flatMap(response => response);
                 setFacilities(allFacilities);
             } catch (error) {
@@ -124,6 +127,7 @@ const Map = ({
                             setShowDetails={setShowDetails}
                             handleRoute={handleRoute}
                             showRoute={showRoute}
+                            setIsLoading={setIsLoading}
                         />
                     </Popup>
                 </Marker>

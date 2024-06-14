@@ -9,7 +9,10 @@ import '../styles/Form.css';
 import {changePassword} from "../api/userApi.js";
 
 
-const ChangePassword = ({ user }) => {
+const ChangePassword = ({
+                            user,
+                            setIsLoading
+                        }) => {
     const [formData, setFormData] = useState({
         currentPassword: '',
         newPassword: '',
@@ -39,7 +42,9 @@ const ChangePassword = ({ user }) => {
             return;
         }
         try {
+            setIsLoading(true);
             const response = await changePassword(user, formData);
+            setIsLoading(false);
             if (response.data.success) {
                 navigate('/?passwordChanged=true');
             } else {

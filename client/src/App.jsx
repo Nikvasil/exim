@@ -6,12 +6,14 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import ChangePassword from './pages/ChangePassword.jsx';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 function App() {
     const [user, setUser] = useState(null);
     const [selectedFacility, setSelectedFacility] = useState(null);
     const [favouriteFacility, setFavouriteFacility] = useState(user ? user.favouriteFacility : null);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const storedUser = localStorage.getItem('user');
@@ -45,6 +47,12 @@ function App() {
                 />
                 <main>
                     <div className="content">
+                        {
+                            isLoading &&
+                            <div className="loader-container">
+                                <CircularProgress sx={{color: "#888888"}}/>
+                            </div>
+                        }
                         <Routes>
                             <Route
                                 path="/"
@@ -55,19 +63,29 @@ function App() {
                                     setSelectedFacility={setSelectedFacility}
                                     favouriteFacility={favouriteFacility}
                                     setFavouriteFacility={setFavouriteFacility}
+                                    setIsLoading={setIsLoading}
                                 />}
                             />
                             <Route
                                 path="/register"
-                                element={!user ? <Register setUser={setUser} /> : <Navigate to="/" />}
+                                element={!user ? <Register
+                                    setUser={setUser}
+                                    setIsLoading={setIsLoading}
+                                /> : <Navigate to="/" />}
                             />
                             <Route
                                 path="/login"
-                                element={!user ? <Login setUser={setUser} /> : <Navigate to="/" />}
+                                element={!user ? <Login
+                                    setUser={setUser}
+                                    setIsLoading={setIsLoading}
+                                /> : <Navigate to="/" />}
                             />
                             <Route
                                 path="/change-password"
-                                element={user ? <ChangePassword user={user} /> : <Navigate to="/" />}
+                                element={user ? <ChangePassword
+                                    user={user}
+                                    setIsLoading={setIsLoading}
+                                /> : <Navigate to="/" />}
                             />
                         </Routes>
                     </div>

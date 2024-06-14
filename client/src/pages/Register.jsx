@@ -11,7 +11,10 @@ import '../api/userApi.js';
 import {registerUser} from "../api/userApi.js";
 
 
-const Register = ({ setUser }) => {
+const Register = ({
+                      setUser,
+                      setIsLoading
+}) => {
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -55,7 +58,9 @@ const Register = ({ setUser }) => {
         }
 
         try {
+            setIsLoading(true);
             const response = await registerUser(formData);
+            setIsLoading(false);
             setUser(response.data);
             localStorage.setItem('user', JSON.stringify(response.data));
             navigate('/');
