@@ -43,18 +43,34 @@ they are located, and how they can be reached is therefore a crucial decision cr
 
 1. Clone the repository: `git clone https://github.com/Nikvasil/exim.git`
 2. Navigate to the project directory: `cd exim`
-3. Install the dependencies: `npm install`
-4. Create a `.env` file in both server and client directories and add your environment variables:
+3. Install the dependencies: `npm run install-all`
+4. Create `.env` files in both `server/` and `client/` directories and add your environment variables:
+
+`/server/.env`:
 ```\server\.env
 PORT=5000
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_jwt_secret
 ```
+
+`/client/.env`:
 ```\client\.env
 VITE_GRAPH_HOPPER_API_KEY=your_graph_hopper_api_key
 ```
-5. Start the development server: `npm start`
-6. Open your browser and navigate to `http://localhost:5173` to view the application.
+5. To run a server and make API calls locally you should change `baseURL` property in `client/` and `origin` property in `server/`: 
+
+`/client/src/api/axios.js`:
+```
+    baseURL: 'http://localhost:5000',
+```
+
+
+`/server/server.js`:
+```
+    origin: 'http://localhost:5173',
+```
+6. Start the development server: `npm start`
+7. Open your browser and navigate to `http://localhost:5173` to view the application.
 
 ## Usage
 
@@ -71,10 +87,11 @@ VITE_GRAPH_HOPPER_API_KEY=your_graph_hopper_api_key
 
 - `MONGO_URI`: The connection string for your MongoDB database.
 - `JWT_SECRET`: The secret key used for JWT authentication.
+- `VITE_GRAPH_HOPPER_API_KEY`: The secret API key for a graph hooper routing machine.
 
 ## API Documentation
 
-This API provides endpoints for user management and facility information, including registration, authentication, password change, home address update, favourite facility management, and CRUD operations on various facilities.
+This API provides endpoints for user management and facility information, including registration, authentication, password change, home address update, favourite facility management, and read operations on various facilities.
 
 ### *User Management Endpoints*
 
