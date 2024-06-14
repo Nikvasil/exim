@@ -5,13 +5,18 @@ import 'leaflet-routing-machine';
 import 'lrm-graphhopper';
 
 
-const RoutingMachine = ({ start, end }) => {
+const RoutingMachine = ({
+                            start,
+                            end,
+                            setIsLoading
+}) => {
     const map = useMap();
     const graphHopperApiKey = import.meta.env.VITE_GRAPH_HOPPER_API_KEY;
 
     useEffect(() => {
         if (!map) return;
 
+        setIsLoading(true);
         const routingControl = L.Routing.control({
             waypoints: [
                 L.latLng(start[0], start[1]),
@@ -24,6 +29,7 @@ const RoutingMachine = ({ start, end }) => {
                 return null;
             }
         }).addTo(map);
+        setIsLoading(false);
 
         return () => {
             map.removeControl(routingControl);

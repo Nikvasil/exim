@@ -32,9 +32,7 @@ const Map = ({
     useEffect(() => {
         const fetchFacilities = async () => {
             try {
-                setIsLoading(true);
-                const responses = await getFacilities(categories);
-                setIsLoading(false);
+                const responses = await getFacilities(categories, setIsLoading);
                 const allFacilities = responses.flatMap(response => response);
                 setFacilities(allFacilities);
             } catch (error) {
@@ -139,7 +137,9 @@ const Map = ({
             {user && selectedFacility && showRoute && (
                 <RoutingMachine
                     start={homeCoordinates || [50.835, 12.929]}
-                    end={[selectedFacility.Y, selectedFacility.X]} />
+                    end={[selectedFacility.Y, selectedFacility.X]}
+                    setIsLoading={setIsLoading}
+                />
             )}
         </MapContainer>
     );

@@ -16,9 +16,7 @@ const FavouriteFacility = ({
 
     const handleSetFavourite = async () => {
         try {
-            setIsLoading(true);
-            const response = await setFavourite(user, facility);
-            setIsLoading(false);
+            const response = await setFavourite(user, facility, setIsLoading);
 
             const newFavouriteFacility = response.data.favouriteFacility;
             setFavouriteFacility(newFavouriteFacility);
@@ -32,9 +30,7 @@ const FavouriteFacility = ({
 
     const handleRemoveFavourite = async () => {
         try {
-            setIsLoading(true);
-            await removeFavourite(user);
-            setIsLoading(false);
+            await removeFavourite(user, setIsLoading);
 
             setFavouriteFacility(null);
 

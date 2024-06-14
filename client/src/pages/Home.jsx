@@ -82,12 +82,10 @@ const Home = ({
         }
 
         try {
-            setIsLoading(true);
-            const coordinates = await getCoordinates(homeAddress);
+            const coordinates = await getCoordinates(homeAddress, setIsLoading);
             setHomeCoordinates([coordinates.lat, coordinates.lon]);
 
-            const response = await updateHomeAddress(user, homeAddress);
-            setIsLoading(false);
+            const response = await updateHomeAddress(user, homeAddress, setIsLoading);
 
             setUser((prevUser) => ({ ...prevUser, homeAddress: response.data.homeAddress }));
             setOldHomeAddress(response.data.homeAddress);
@@ -109,9 +107,7 @@ const Home = ({
         const fetchHomeCoordinates = async () => {
             if (user && user.homeAddress) {
                 try {
-                    setIsLoading(true);
-                    const coordinates = await getCoordinates(user.homeAddress);
-                    setIsLoading(false);
+                    const coordinates = await getCoordinates(user.homeAddress, setIsLoading);
                     setError(null);
                     setHomeCoordinates([coordinates.lat, coordinates.lon]);
                 } catch (error) {

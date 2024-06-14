@@ -1,23 +1,30 @@
 import api from './axios';
 
-export const registerUser = async(formData) => {
-    return await api.post('api/users/register', formData);
+export const registerUser = async(formData, setIsLoading) => {
+    setIsLoading(true);
+    const response =  await api.post('api/users/register', formData);
+    setIsLoading(false);
+    return response;
 }
 
-export const loginUser = async(formData) => {
+export const loginUser = async(formData, setIsLoading) => {
+    setIsLoading(true);
     return await api.post('api/users/login', formData);
 }
 
-export const deleteUser = async(user) => {
+export const deleteUser = async(user, setIsLoading) => {
+    setIsLoading(true);
     await api.delete(`/api/users/${user._id}`, {
         headers: {
             Authorization: `Bearer ${user.token}`
         }
     });
+    setIsLoading(false);
 }
 
-export const changePassword = async(user, formData) => {
-    return await api.post('/api/users/change-password', {
+export const changePassword = async(user, formData, setIsLoading) => {
+    setIsLoading(true);
+    const response = await api.post('/api/users/change-password', {
         userId: user._id,
         currentPassword: formData.currentPassword,
         newPassword: formData.newPassword,
@@ -26,10 +33,13 @@ export const changePassword = async(user, formData) => {
             Authorization: `Bearer ${user.token}`
         }
     });
+    setIsLoading(false);
+    return response;
 }
 
-export const updateHomeAddress = async(user, homeAddress) => {
-    return await api.post('/api/users/update-home-address', {
+export const updateHomeAddress = async(user, homeAddress, setIsLoading) => {
+    setIsLoading(true);
+    const response = await api.post('/api/users/update-home-address', {
         userId: user._id,
         homeAddress,
     }, {
@@ -37,4 +47,6 @@ export const updateHomeAddress = async(user, homeAddress) => {
             Authorization: `Bearer ${user.token}`
         }
     });
+    setIsLoading(false);
+    return response;
 }

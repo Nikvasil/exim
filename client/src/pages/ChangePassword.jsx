@@ -42,9 +42,7 @@ const ChangePassword = ({
             return;
         }
         try {
-            setIsLoading(true);
-            const response = await changePassword(user, formData);
-            setIsLoading(false);
+            const response = await changePassword(user, formData, setIsLoading);
             if (response.data.success) {
                 navigate('/?passwordChanged=true');
             } else {

@@ -41,9 +41,7 @@ const Login = ({
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            setIsLoading(true);
-            const response = await loginUser(formData);
-            setIsLoading(false);
+            const response = await loginUser(formData, setIsLoading);
             setUser(response.data);
             if (rememberMe) {
                 localStorage.setItem('user', JSON.stringify(response.data));

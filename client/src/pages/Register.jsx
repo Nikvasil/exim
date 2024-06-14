@@ -58,9 +58,7 @@ const Register = ({
         }
 
         try {
-            setIsLoading(true);
-            const response = await registerUser(formData);
-            setIsLoading(false);
+            const response = await registerUser(formData, setIsLoading);
             setUser(response.data);
             localStorage.setItem('user', JSON.stringify(response.data));
             navigate('/');
