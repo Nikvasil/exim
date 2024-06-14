@@ -134,7 +134,7 @@ const Map = ({
                 <CenterMap center={[selectedFacility.Y, selectedFacility.X]} />}
             {selectedFacility && showDetails &&
                 <CenterMap center={[selectedFacility.Y + 0.008, selectedFacility.X]} />}
-            {user && selectedFacility && showRoute && (
+            {user && showRoute && (
                 <RoutingMachine
                     start={homeCoordinates || [50.835, 12.929]}
                     end={[selectedFacility.Y, selectedFacility.X]}
