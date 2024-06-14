@@ -22,10 +22,7 @@ export const removeFavourite = async(user, setIsLoading) => {
 }
 
 export const getFacilities = async(categories, setIsLoading) => {
-    setIsLoading(true);
-    const response = await Promise.all(
+    return await Promise.all(
         categories.map(category => api.get(`/api/${category}`).then(res => res.data.map(item => ({ ...item, category }))))
     );
-    setIsLoading(false);
-    return response;
 }
