@@ -1,4 +1,4 @@
-# exim | Educational and Care System Interaction Map of Chemnitz 
+# exim | Educational and Care System Interactive Map of Chemnitz 
 
 ## Table of Contents
 - [Overview](#overview)
