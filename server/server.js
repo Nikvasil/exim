@@ -27,7 +27,7 @@ app.use(express.json());
 
 
 app.use(cors({
-    origin: 'https://exim-one.vercel.app', credentials: true,
+    origin: 'http://localhost:5173', credentials: true,
 }));
 
 

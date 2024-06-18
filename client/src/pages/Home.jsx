@@ -1,4 +1,3 @@
-import L from 'leaflet';
 import {useEffect, useState} from 'react';
 import {useLocation} from 'react-router-dom';
 import Map from '../components/Map/Map.jsx';
@@ -15,7 +14,8 @@ const Home = ({
                   selectedFacility,
                   setSelectedFacility,
                   favouriteFacility,
-                  setFavouriteFacility
+                  setFavouriteFacility,
+                  setIsLoading
               }) => {
     const [message, setMessage] = useState('');
     const location = useLocation();
@@ -81,7 +81,7 @@ const Home = ({
             const coordinates = await getCoordinates(homeAddress);
             setHomeCoordinates([coordinates.lat, coordinates.lon]);
 
-            const response = await updateHomeAddress(user, homeAddress);
+            const response = await updateHomeAddress(user, homeAddress, setIsLoading);
 
             setUser((prevUser) => ({...prevUser, homeAddress: response.data.homeAddress}));
             setOldHomeAddress(response.data.homeAddress);
@@ -139,37 +139,37 @@ const Home = ({
     const selectedCategories = Object.keys(checkboxes).filter(key => checkboxes[key]);
 
     return (<div className="home-container">
-            <AddressForm
+        <AddressForm
+            user={user}
+            isEditing={isEditing}
+            homeAddress={homeAddress}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            setIsEditing={setIsEditing}
+            oldHomeAddress={oldHomeAddress}
+            setOldHomeAddress={setOldHomeAddress}
+            setHomeAddress={setHomeAddress}
+        />
+        <Messages error={error} message={message}/>
+        <FilterCheckbox
+            checkboxes={checkboxes}
+            handleCheckboxChange={handleCheckboxChange}
+            handleSelectAll={handleSelectAll}
+            selectAll={selectAll}
+        />
+        <div className="home-leaflet-container">
+            <Map
                 user={user}
-                isEditing={isEditing}
-                homeAddress={homeAddress}
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-                setIsEditing={setIsEditing}
-                oldHomeAddress={oldHomeAddress}
-                setOldHomeAddress={setOldHomeAddress}
-                setHomeAddress={setHomeAddress}
+                homeCoordinates={homeCoordinates}
+                categories={selectedCategories}
+                setUser={setUser}
+                selectedFacility={selectedFacility}
+                setSelectedFacility={setSelectedFacility}
+                favouriteFacility={favouriteFacility}
+                setFavouriteFacility={setFavouriteFacility}
             />
-            <Messages error={error} message={message}/>
-            <FilterCheckbox
-                checkboxes={checkboxes}
-                handleCheckboxChange={handleCheckboxChange}
-                handleSelectAll={handleSelectAll}
-                selectAll={selectAll}
-            />
-            <div className="home-leaflet-container">
-                <Map
-                    user={user}
-                    homeCoordinates={homeCoordinates}
-                    categories={selectedCategories}
-                    setUser={setUser}
-                    selectedFacility={selectedFacility}
-                    setSelectedFacility={setSelectedFacility}
-                    favouriteFacility={favouriteFacility}
-                    setFavouriteFacility={setFavouriteFacility}
-                />
-            </div>
-        </div>);
+        </div>
+    </div>);
 };
 
 

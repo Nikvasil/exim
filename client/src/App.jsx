@@ -60,6 +60,7 @@ function App() {
                                     setSelectedFacility={setSelectedFacility}
                                     favouriteFacility={favouriteFacility}
                                     setFavouriteFacility={setFavouriteFacility}
+                                    setIsLoading={setIsLoading}
                                 />}
                             />
                             <Route
