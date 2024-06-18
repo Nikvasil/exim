@@ -5,8 +5,7 @@ import '../styles/Footer.css';
 
 
 const Footer = () => {
-    return (
-        <footer>
+    return (<footer>
             <div className="footer-container">
                 <div className="footer-column">
                     <h3>Contact Info</h3>
@@ -30,8 +29,7 @@ const Footer = () => {
                     <p>This website does not belong to a real company. It is a university project.</p>
                 </div>
             </div>
-        </footer>
-    );
+        </footer>);
 };
 
 

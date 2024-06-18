@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import {useState} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import Checkbox from '@mui/material/Checkbox';
-import { grey } from '@mui/material/colors';
+import {grey} from '@mui/material/colors';
 import PasswordVisibilityToggle from '../components/Password/PasswordVisibilityToggle';
 import ErrorMessage from '../components/Password/ErrorMessage';
 import '../styles/Password.css';
@@ -12,12 +12,10 @@ import {loginUser} from "../api/userApi.js";
 
 
 const Login = ({
-                   setUser,
-    setIsLoading
+                   setUser, setIsLoading
                }) => {
     const [formData, setFormData] = useState({
-        identifier: '',
-        password: '',
+        identifier: '', password: '',
     });
 
     const [showPassword, setShowPassword] = useState(false);
@@ -26,10 +24,9 @@ const Login = ({
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData({
-            ...formData,
-            [name]: value,
+            ...formData, [name]: value,
         });
         setError('');
     };
@@ -57,8 +54,7 @@ const Login = ({
         setShowPassword(!showPassword);
     };
 
-    return (
-        <form onSubmit={handleSubmit}>
+    return (<form onSubmit={handleSubmit}>
             <h1>Log In to Exim</h1>
             <label htmlFor="identifier">Email or Username</label>
             <input
@@ -87,15 +83,14 @@ const Login = ({
                     checked={rememberMe}
                     onChange={handleCheckboxChange}
                     sx={{
-                        color: grey[600],
-                        '&.Mui-checked': {
+                        color: grey[600], '&.Mui-checked': {
                             color: grey[400],
                         },
                     }}
                 />
                 Remember me
             </div>
-            <ErrorMessage error={error} />
+            <ErrorMessage error={error}/>
             <button type="submit">Log In</button>
             <div className="login-signup-container">
                 Or <Link
@@ -104,8 +99,7 @@ const Login = ({
                 Sign Up
             </Link> if you are not a member yet.
             </div>
-        </form>
-    );
+        </form>);
 };
 
 

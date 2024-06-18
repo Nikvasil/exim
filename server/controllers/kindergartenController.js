@@ -12,9 +12,9 @@ const getKindergartenById = async (req, res) => {
     if (kindergarten) {
         res.json(kindergarten);
     } else {
-        res.status(404).json({ message: 'Kindergarten not found' });
+        res.status(404).json({message: 'Kindergarten not found'});
     }
 };
 
 
-module.exports = { getKindergartens, getKindergartenById };
+module.exports = {getKindergartens, getKindergartenById};

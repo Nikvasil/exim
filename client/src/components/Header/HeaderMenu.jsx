@@ -1,18 +1,12 @@
 import React from 'react';
-import { MenuItem, MenuList, ClickAwayListener, Grow, Paper, Popper } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import {ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper} from '@mui/material';
+import {useNavigate} from 'react-router-dom';
 import {deleteUser} from "../../api/userApi.js";
 
 
 const HeaderMenu = ({
-                        user,
-                        open,
-                        handleClose,
-                        handleListKeyDown,
-                        anchorRef,
-                        setOpen,
-                        onLogout
-}) => {
+                        user, open, handleClose, handleListKeyDown, anchorRef, setOpen, onLogout
+                    }) => {
     const navigate = useNavigate();
 
     const handleChangePassword = () => {
@@ -42,23 +36,19 @@ const HeaderMenu = ({
         }
     };
 
-    return (
-        <Popper
+    return (<Popper
             open={open}
             anchorEl={anchorRef.current}
             role={undefined}
             placement="bottom"
             transition disablePortal
         >
-            {({ TransitionProps, placement }) => (
-                <Grow
+            {({TransitionProps, placement}) => (<Grow
                     {...TransitionProps}
-                    style={{ transformOrigin: placement === 'bottom-end' }}
+                    style={{transformOrigin: placement === 'bottom-end'}}
                 >
                     <Paper sx={{
-                        marginTop: '0.5vh',
-                        bgcolor: '#4D4D4D',
-                        color: 'white'
+                        marginTop: '0.5vh', bgcolor: '#4D4D4D', color: 'white'
                     }}>
                         <ClickAwayListener onClickAway={handleClose}>
                             <MenuList autoFocusItem={open}
@@ -67,14 +57,15 @@ const HeaderMenu = ({
                                       onKeyDown={handleListKeyDown}
                             >
                                 <div className="header-account-username">Hi, {user.username}!</div>
-                                <div className="header-account-divider" />
+                                <div className="header-account-divider"/>
                                 <MenuItem
                                     sx={{
-                                    fontFamily: '"Linux Libertine G", serif',
-                                    borderRadius: '4px',
-                                    padding: '1.4vh',
-                                    margin: '0.5vh' }}
-                                          onClick={handleChangePassword}
+                                        fontFamily: '"Linux Libertine G", serif',
+                                        borderRadius: '4px',
+                                        padding: '1.4vh',
+                                        margin: '0.5vh'
+                                    }}
+                                    onClick={handleChangePassword}
                                 >
                                     Change Password
                                 </MenuItem>
@@ -83,7 +74,8 @@ const HeaderMenu = ({
                                         fontFamily: '"Linux Libertine G", serif',
                                         borderRadius: '4px',
                                         padding: '1.4vh',
-                                        margin: '0.5vh' }}
+                                        margin: '0.5vh'
+                                    }}
                                     onClick={handleLogout}
                                 >
                                     Log Out
@@ -91,13 +83,15 @@ const HeaderMenu = ({
                                 <MenuItem
                                     className="header-menu-item"
                                     sx={{
-                                        '&:hover': { bgcolor: '#A81700' },
+                                        '&:hover': {bgcolor: '#A81700'},
                                         borderRadius: '4px',
                                         bgcolor: '#C91C00',
                                         fontFamily: '"Linux Libertine G", serif',
-                                        padding: '1.4vh', marginTop: '0.5vh',
+                                        padding: '1.4vh',
+                                        marginTop: '0.5vh',
                                         marginLeft: '0.5vh',
-                                        marginRight: '0.5vh' }}
+                                        marginRight: '0.5vh'
+                                    }}
                                     onClick={handleDelete}
                                 >
                                     Delete
@@ -105,10 +99,8 @@ const HeaderMenu = ({
                             </MenuList>
                         </ClickAwayListener>
                     </Paper>
-                </Grow>
-            )}
-        </Popper>
-    );
+                </Grow>)}
+        </Popper>);
 };
 
 

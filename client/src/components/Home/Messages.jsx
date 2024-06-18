@@ -1,31 +1,26 @@
 import React from 'react';
 import Alert from '@mui/material/Alert';
-import { grey } from '@mui/material/colors';
+import {grey} from '@mui/material/colors';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import '../../styles/Error.css';
 
 
 const Messages = ({
-                      error,
-                      message
-}) => (
-    <>
-        {error && (
-            <div className="home-message">
+                      error, message
+                  }) => (<>
+        {error && (<div className="home-message">
                 <Alert
                     variant="filled"
                     severity="error"
                 >
                     {error}
                 </Alert>
-            </div>
-        )}
-        {message && (
-            <div className="home-message">
+            </div>)}
+        {message && (<div className="home-message">
                 <Alert
                     icon={<CheckBoxOutlinedIcon
                         fontSize="inherit"
-                        sx={{ color: grey[100] }}
+                        sx={{color: grey[100]}}
                     />}
                     sx={{
                         color: grey[100],
@@ -39,10 +34,8 @@ const Messages = ({
                 >
                     {message}
                 </Alert>
-            </div>
-        )}
-    </>
-);
+            </div>)}
+    </>);
 
 
 export default Messages;

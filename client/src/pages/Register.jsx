@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import PasswordVisibilityToggle from '../components/Password/PasswordVisibilityToggle';
 import ErrorMessage from '../components/Password/ErrorMessage';
@@ -12,13 +12,10 @@ import {registerUser} from "../api/userApi.js";
 
 
 const Register = ({
-                      setUser,
-                      setIsLoading
-}) => {
+                      setUser, setIsLoading
+                  }) => {
     const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: '',
+        username: '', email: '', password: '',
     });
 
     const [showPassword, setShowPassword] = useState(false);
@@ -26,10 +23,9 @@ const Register = ({
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData({
-            ...formData,
-            [name]: value,
+            ...formData, [name]: value,
         });
         setError('');
     };
@@ -76,8 +72,7 @@ const Register = ({
         setShowPassword(!showPassword);
     };
 
-    return (
-        <form onSubmit={handleSubmit}>
+    return (<form onSubmit={handleSubmit}>
             <h1>Get Started</h1>
             <label htmlFor="username">Username</label>
             <input
@@ -102,7 +97,7 @@ const Register = ({
                     placement="right-start"
                     title="Make sure your password is at least 8 characters long and contains an uppercase letter, a lowercase letter, a special character, and a number.">
                     <HelpOutlineIcon
-                        sx={{ fontSize: "2.6vh" }}
+                        sx={{fontSize: "2.6vh"}}
                         fontSize="small"
                         className="password-tooltip"
                     />
@@ -121,10 +116,9 @@ const Register = ({
                     togglePasswordVisibility={togglePasswordVisibility}
                 />
             </div>
-            <ErrorMessage error={error} />
+            <ErrorMessage error={error}/>
             <button type="submit">Sign Up</button>
-        </form>
-    );
+        </form>);
 };
 
 

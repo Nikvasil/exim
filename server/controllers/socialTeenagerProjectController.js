@@ -12,9 +12,9 @@ const getSocialTeenagerProjectById = async (req, res) => {
     if (socialTeenagerProject) {
         res.json(socialTeenagerProject);
     } else {
-        res.status(404).json({ message: 'Social teenager project not found' });
+        res.status(404).json({message: 'Social teenager project not found'});
     }
 };
 
 
-module.exports = { getSocialTeenagerProjects, getSocialTeenagerProjectById };
+module.exports = {getSocialTeenagerProjects, getSocialTeenagerProjectById};

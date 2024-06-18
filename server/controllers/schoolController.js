@@ -12,9 +12,9 @@ const getSchoolById = async (req, res) => {
     if (school) {
         res.json(school);
     } else {
-        res.status(404).json({ message: 'School not found' });
+        res.status(404).json({message: 'School not found'});
     }
 };
 
 
-module.exports = { getSchools, getSchoolById };
+module.exports = {getSchools, getSchoolById};

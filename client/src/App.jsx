@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -38,8 +38,7 @@ function App() {
         localStorage.removeItem('user');
     };
 
-    return (
-        <Router>
+    return (<Router>
             <div className="App">
                 <Header
                     user={user}
@@ -47,12 +46,9 @@ function App() {
                 />
                 <main>
                     <div className="content">
-                        {
-                            isLoading &&
-                            <div className="loader-container">
-                                <CircularProgress sx={{color: "#888888"}}/>
-                            </div>
-                        }
+                        {isLoading && <div className="loader-container">
+                            <CircularProgress sx={{color: "#888888"}}/>
+                        </div>}
                         <Routes>
                             <Route
                                 path="/"
@@ -71,29 +67,28 @@ function App() {
                                 element={!user ? <Register
                                     setUser={setUser}
                                     setIsLoading={setIsLoading}
-                                /> : <Navigate to="/" />}
+                                /> : <Navigate to="/"/>}
                             />
                             <Route
                                 path="/login"
                                 element={!user ? <Login
                                     setUser={setUser}
                                     setIsLoading={setIsLoading}
-                                /> : <Navigate to="/" />}
+                                /> : <Navigate to="/"/>}
                             />
                             <Route
                                 path="/change-password"
                                 element={user ? <ChangePassword
                                     user={user}
                                     setIsLoading={setIsLoading}
-                                /> : <Navigate to="/" />}
+                                /> : <Navigate to="/"/>}
                             />
                         </Routes>
                     </div>
                 </main>
-                <Footer />
+                <Footer/>
             </div>
-        </Router>
-    );
+        </Router>);
 }
 
 

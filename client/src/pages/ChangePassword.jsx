@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 import PasswordVisibilityToggle from '../components/Password/PasswordVisibilityToggle';
 import TooltipComponent from '../components/Password/TooltipComponent';
 import ErrorMessage from '../components/Password/ErrorMessage';
@@ -10,12 +10,10 @@ import {changePassword} from "../api/userApi.js";
 
 
 const ChangePassword = ({
-                            user,
-                            setIsLoading
+                            user, setIsLoading
                         }) => {
     const [formData, setFormData] = useState({
-        currentPassword: '',
-        newPassword: '',
+        currentPassword: '', newPassword: '',
     });
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
@@ -27,10 +25,9 @@ const ChangePassword = ({
     };
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
         setFormData({
-            ...formData,
-            [name]: value,
+            ...formData, [name]: value,
         });
         setError(''); // Clear error message when user types
     };
@@ -58,8 +55,7 @@ const ChangePassword = ({
         setShowPassword(!showPassword);
     };
 
-    return (
-        <form onSubmit={handleSubmit}>
+    return (<form onSubmit={handleSubmit}>
             <h1>Change Password</h1>
             <label htmlFor="currentPassword">Current Password</label>
             <div className="password-container">
@@ -77,7 +73,8 @@ const ChangePassword = ({
             </div>
             <div className="label-password-container">
                 <label htmlFor="newPassword">New Password</label>
-                <TooltipComponent title="Make sure your password is at least 8 characters long and contains an uppercase letter, a lowercase letter, a special character, and a number." />
+                <TooltipComponent
+                    title="Make sure your password is at least 8 characters long and contains an uppercase letter, a lowercase letter, a special character, and a number."/>
             </div>
             <div className="password-container">
                 <input
@@ -92,10 +89,9 @@ const ChangePassword = ({
                     togglePasswordVisibility={togglePasswordVisibility}
                 />
             </div>
-            <ErrorMessage error={error} />
+            <ErrorMessage error={error}/>
             <button type="submit">Change</button>
-        </form>
-    );
+        </form>);
 };
 
 

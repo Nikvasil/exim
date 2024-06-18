@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
@@ -17,11 +17,10 @@ const AddressForm = ({
                          oldHomeAddress,
                          setOldHomeAddress,
                          setHomeAddress
-}) => (!user ? (
-            <div className="home-address-container">
-                <div>
+                     }) => (!user ? (<div className="home-address-container">
+            <div>
                 <HomeOutlinedIcon
-                    sx={{ fontSize: "3.2vh" }}
+                    sx={{fontSize: "3.2vh"}}
                     className="home-icon"
                 />
                 <Link
@@ -29,23 +28,20 @@ const AddressForm = ({
                     className="home-link">
                     Sign Up
                 </Link> or <Link
-                    to="/login"
-                      className="home-link">
-                    Log In
-                </Link> to add your home address
-                </div>
+                to="/login"
+                className="home-link">
+                Log In
+            </Link> to add your home address
             </div>
-        ) : (
-            !user.homeAddress || isEditing ? (
-                <div className="home-address-edit-container">
-                    <div>
+        </div>) : (!user.homeAddress || isEditing ? (<div className="home-address-edit-container">
+                <div>
                     <HomeOutlinedIcon
-                        sx={{ fontSize: "3.2vh" }}
+                        sx={{fontSize: "3.2vh"}}
                         className="home-icon"
                     />
                     Add your home address:
-                        </div>
-                    <div>
+                </div>
+                <div>
                     <input
                         className="home-address-input"
                         type="text"
@@ -65,7 +61,7 @@ const AddressForm = ({
                     </button>
                     <button
                         type="button"
-                            className="home-address-button"
+                        className="home-address-button"
                         onClick={() => setIsEditing(!isEditing)}
                     >
                         X
@@ -76,17 +72,15 @@ const AddressForm = ({
                         title="Make sure you have entered a real existing address."
                     >
                         <HelpOutlineIcon
-                            sx={{ fontSize: "2.6vh" }}
+                            sx={{fontSize: "2.6vh"}}
                             className="home-tooltip"
                         />
                     </TooltipComponent>
-                    </div>
                 </div>
-            ) : (
-                <div className="home-address-container">
-                    <div>
+            </div>) : (<div className="home-address-container">
+                <div>
                     <HomeOutlinedIcon
-                        sx={{ fontSize: "3.2vh" }}
+                        sx={{fontSize: "3.2vh"}}
                         className="home-icon"
                     />
                     Your home address is {user.homeAddress}
@@ -98,13 +92,10 @@ const AddressForm = ({
                             setHomeAddress(user.homeAddress)
                             setIsEditing(!isEditing);
                         }}>
-                        <EditOutlinedIcon sx={{ fontSize: "2.2vh" }} />
+                        <EditOutlinedIcon sx={{fontSize: "2.2vh"}}/>
                     </button>
-                    </div>
                 </div>
-            )
-        )
-);
+            </div>)));
 
 
 export default AddressForm;

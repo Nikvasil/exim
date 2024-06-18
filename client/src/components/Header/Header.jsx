@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import {useEffect, useRef, useState} from 'react';
+import {Link} from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import '../../styles/Header.css';
 import HeaderMenu from './HeaderMenu';
@@ -7,9 +7,8 @@ import useScrollHandler from './useScrollHandler';
 
 
 const Header = ({
-                    user,
-                    onLogout
-}) => {
+                    user, onLogout
+                }) => {
     const [open, setOpen] = useState(false);
     const scrollUp = useScrollHandler();
     const anchorRef = useRef(null);
@@ -43,8 +42,7 @@ const Header = ({
         prevOpen.current = open;
     }, [open]);
 
-    return (
-        <header className={scrollUp ? 'show' : 'hide'}>
+    return (<header className={scrollUp ? 'show' : 'hide'}>
             <div className="header-container">
                 <div className="header-left">
                     <Link
@@ -55,8 +53,7 @@ const Header = ({
                     </Link>
                 </div>
                 <div className="header-right">
-                    {!user ? (
-                        <div className="header-links">
+                    {!user ? (<div className="header-links">
                             <Link
                                 to="/register"
                                 className="header-button-contained"
@@ -69,9 +66,7 @@ const Header = ({
                             >
                                 Log In
                             </Link>
-                        </div>
-                    ) : (
-                        <div className="header-account">
+                        </div>) : (<div className="header-account">
                             <Avatar
                                 sx={{
                                     width: "5.4vh",
@@ -99,12 +94,10 @@ const Header = ({
                                 setOpen={setOpen}
                                 onLogout={onLogout}
                             />
-                        </div>
-                    )}
+                        </div>)}
                 </div>
             </div>
-        </header>
-    );
+        </header>);
 };
 
 

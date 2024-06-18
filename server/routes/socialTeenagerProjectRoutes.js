@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { getSocialTeenagerProjects, getSocialTeenagerProjectById } = require('../controllers/socialTeenagerProjectController');
+const {
+    getSocialTeenagerProjects,
+    getSocialTeenagerProjectById
+} = require('../controllers/socialTeenagerProjectController');
 
 
 router.get('/', getSocialTeenagerProjects);

@@ -4,23 +4,16 @@ import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined
 
 
 const PasswordVisibilityToggle = ({
-                                      showPassword,
-                                      togglePasswordVisibility
-}) => (
-    showPassword ? (
-        <VisibilityOffOutlinedIcon
-            sx={{ fontSize: "3vh" }}
+                                      showPassword, togglePasswordVisibility
+                                  }) => (showPassword ? (<VisibilityOffOutlinedIcon
+            sx={{fontSize: "3vh"}}
             className="password-visibility-icon"
             onClick={togglePasswordVisibility}
-        />
-    ) : (
-        <VisibilityOutlinedIcon
-            sx={{ fontSize: "3vh" }}
+        />) : (<VisibilityOutlinedIcon
+            sx={{fontSize: "3vh"}}
             className="password-visibility-icon"
             onClick={togglePasswordVisibility}
-        />
-    )
-);
+        />));
 
 
 export default PasswordVisibilityToggle;

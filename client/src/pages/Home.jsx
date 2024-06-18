@@ -1,6 +1,6 @@
 import L from 'leaflet';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {useLocation} from 'react-router-dom';
 import Map from '../components/Map/Map.jsx';
 import AddressForm from '../components/Home/AddressForm';
 import Messages from '../components/Home/Messages';
@@ -17,7 +17,7 @@ const Home = ({
                   favouriteFacility,
                   setFavouriteFacility,
                   setIsLoading
-}) => {
+              }) => {
     const [message, setMessage] = useState('');
     const location = useLocation();
     const [error, setError] = useState(null);
@@ -27,10 +27,7 @@ const Home = ({
     const [isEditing, setIsEditing] = useState(false);
     const [selectAll, setSelectAll] = useState(false);
     const [checkboxes, setCheckboxes] = useState({
-        schools: false,
-        kindergarten: false,
-        'social-child-projects': false,
-        'social-teenager-projects': false,
+        schools: false, kindergarten: false, 'social-child-projects': false, 'social-teenager-projects': false,
     });
 
     useEffect(() => {
@@ -62,9 +59,9 @@ const Home = ({
     };
 
     const handleCheckboxChange = (e) => {
-        const { name, checked } = e.target;
+        const {name, checked} = e.target;
         setCheckboxes((prev) => {
-            const newCheckboxes = { ...prev, [name]: checked };
+            const newCheckboxes = {...prev, [name]: checked};
             const allChecked = Object.values(newCheckboxes).every((value) => value);
             setSelectAll(allChecked);
             return newCheckboxes;
@@ -87,7 +84,7 @@ const Home = ({
 
             const response = await updateHomeAddress(user, homeAddress, setIsLoading);
 
-            setUser((prevUser) => ({ ...prevUser, homeAddress: response.data.homeAddress }));
+            setUser((prevUser) => ({...prevUser, homeAddress: response.data.homeAddress}));
             setOldHomeAddress(response.data.homeAddress);
             setIsEditing(false);
             setError(null);
@@ -129,8 +126,8 @@ const Home = ({
             const response = await fetch(url);
             const data = await response.json();
             if (data && data.length > 0) {
-                const { lat, lon } = data[0];
-                return { lat, lon };
+                const {lat, lon} = data[0];
+                return {lat, lon};
             } else {
                 throw new Error('Address not found');
             }
@@ -142,8 +139,7 @@ const Home = ({
 
     const selectedCategories = Object.keys(checkboxes).filter(key => checkboxes[key]);
 
-    return (
-        <div className="home-container">
+    return (<div className="home-container">
             <AddressForm
                 user={user}
                 isEditing={isEditing}
@@ -155,7 +151,7 @@ const Home = ({
                 setOldHomeAddress={setOldHomeAddress}
                 setHomeAddress={setHomeAddress}
             />
-            <Messages error={error} message={message} />
+            <Messages error={error} message={message}/>
             <FilterCheckbox
                 checkboxes={checkboxes}
                 handleCheckboxChange={handleCheckboxChange}
@@ -175,8 +171,7 @@ const Home = ({
                     setIsLoading={setIsLoading}
                 />
             </div>
-        </div>
-    );
+        </div>);
 };
 
 

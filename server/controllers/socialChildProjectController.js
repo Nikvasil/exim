@@ -12,9 +12,9 @@ const getSocialChildProjectById = async (req, res) => {
     if (socialChildProject) {
         res.json(socialChildProject);
     } else {
-        res.status(404).json({ message: 'Social child project not found' });
+        res.status(404).json({message: 'Social child project not found'});
     }
 };
 
 
-module.exports = { getSocialChildProjects, getSocialChildProjectById };
+module.exports = {getSocialChildProjects, getSocialChildProjectById};
