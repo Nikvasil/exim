@@ -5,7 +5,7 @@ import {deleteUser} from "../../api/userApi.js";
 
 
 const HeaderMenu = ({
-                        user, open, handleClose, handleListKeyDown, anchorRef, setOpen, onLogout
+                        user, open, handleClose, handleListKeyDown, anchorRef, setOpen, onLogout, setIsLoading
                     }) => {
     const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const HeaderMenu = ({
         if (confirmDelete) {
             try {
                 await setOpen(false);
-                await deleteUser(user);
+                await deleteUser(user, setIsLoading);
                 localStorage.removeItem('user');
                 onLogout();
                 navigate('/');

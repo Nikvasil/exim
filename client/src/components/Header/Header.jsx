@@ -7,7 +7,7 @@ import useScrollHandler from './useScrollHandler';
 
 
 const Header = ({
-                    user, onLogout
+                    user, onLogout, setIsLoading
                 }) => {
     const [open, setOpen] = useState(false);
     const scrollUp = useScrollHandler();

@@ -60,7 +60,7 @@ const Register = ({
             navigate('/');
         } catch (error) {
             if (error.response && error.response.status === 400 && error.response.data.message === 'User already exists') {
-                setError('This user already exists.');
+                setError(error.response.data.message);
             } else {
                 setError('Registration failed. Please try again.');
             }
@@ -73,52 +73,52 @@ const Register = ({
     };
 
     return (<form onSubmit={handleSubmit}>
-            <h1>Get Started</h1>
-            <label htmlFor="username">Username</label>
+        <h1>Get Started</h1>
+        <label htmlFor="username">Username</label>
+        <input
+            type="text"
+            name="username"
+            id="username"
+            onChange={handleChange}
+            required
+        />
+        <label htmlFor="email">Email</label>
+        <input
+            type="email"
+            name="email"
+            id="email"
+            onChange={handleChange}
+            required
+        />
+        <div className="label-password-container">
+            <label htmlFor="password">Password</label>
+            <TooltipComponent
+                arrow
+                placement="right-start"
+                title="Make sure your password is at least 8 characters long and contains an uppercase letter, a lowercase letter, a special character, and a number.">
+                <HelpOutlineIcon
+                    sx={{fontSize: "2.6vh"}}
+                    fontSize="small"
+                    className="password-tooltip"
+                />
+            </TooltipComponent>
+        </div>
+        <div className="password-container">
             <input
-                type="text"
-                name="username"
-                id="username"
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                id="password"
                 onChange={handleChange}
                 required
             />
-            <label htmlFor="email">Email</label>
-            <input
-                type="email"
-                name="email"
-                id="email"
-                onChange={handleChange}
-                required
+            <PasswordVisibilityToggle
+                showPassword={showPassword}
+                togglePasswordVisibility={togglePasswordVisibility}
             />
-            <div className="label-password-container">
-                <label htmlFor="password">Password</label>
-                <TooltipComponent
-                    arrow
-                    placement="right-start"
-                    title="Make sure your password is at least 8 characters long and contains an uppercase letter, a lowercase letter, a special character, and a number.">
-                    <HelpOutlineIcon
-                        sx={{fontSize: "2.6vh"}}
-                        fontSize="small"
-                        className="password-tooltip"
-                    />
-                </TooltipComponent>
-            </div>
-            <div className="password-container">
-                <input
-                    type={showPassword ? 'text' : 'password'}
-                    name="password"
-                    id="password"
-                    onChange={handleChange}
-                    required
-                />
-                <PasswordVisibilityToggle
-                    showPassword={showPassword}
-                    togglePasswordVisibility={togglePasswordVisibility}
-                />
-            </div>
-            <ErrorMessage error={error}/>
-            <button type="submit">Sign Up</button>
-        </form>);
+        </div>
+        <ErrorMessage error={error}/>
+        <button type="submit">Sign Up</button>
+    </form>);
 };
 
 
