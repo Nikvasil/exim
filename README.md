@@ -254,7 +254,7 @@ This API provides endpoints for user management and facility information, includ
 
 ### Facility categories:
 
-- kindergartens
+- kindergarten
 - schools
 - social-child-projects
 - social-young-projects
