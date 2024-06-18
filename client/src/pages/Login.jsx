@@ -46,7 +46,7 @@ const Login = ({
             navigate('/');
         } catch (error) {
             setIsLoading(false);
-            setError(error.response.data.message);
+            setError("Incorrect credentials or user doesn't exist.");
             console.error('Login Error:', error);
         }
     };
