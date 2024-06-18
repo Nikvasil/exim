@@ -5,7 +5,7 @@ import {removeFavourite, setFavourite} from "../../api/facilityApi.js";
 
 
 const FavouriteFacility = ({
-                               user, facility, setUser, favouriteFacility, setFavouriteFacility, setIsLoading
+                               user, facility, setUser, favouriteFacility, setFavouriteFacility
                            }) => {
     const [hoverFavourite, setHoverFavourite] = useState(false);
 

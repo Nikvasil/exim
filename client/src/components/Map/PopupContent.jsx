@@ -12,8 +12,7 @@ const PopupContent = ({
                           showDetails,
                           setShowDetails,
                           handleRoute,
-                          showRoute,
-                          setIsLoading
+                          showRoute
                       }) => {
     const handleDetails = () => {
         setShowDetails(!showDetails);
@@ -46,7 +45,6 @@ const PopupContent = ({
                     setUser={setUser}
                     favouriteFacility={favouriteFacility}
                     setFavouriteFacility={setFavouriteFacility}
-                    setIsLoading={setIsLoading}
                 />)}
             {user?.homeAddress && (<div className="map-button-container">
                     <button onClick={handleRoute}>

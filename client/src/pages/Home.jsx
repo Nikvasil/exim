@@ -79,10 +79,10 @@ const Home = ({
         }
 
         try {
-            const coordinates = await getCoordinates(homeAddress, setIsLoading);
+            const coordinates = await getCoordinates(homeAddress);
             setHomeCoordinates([coordinates.lat, coordinates.lon]);
 
-            const response = await updateHomeAddress(user, homeAddress, setIsLoading);
+            const response = await updateHomeAddress(user, homeAddress);
 
             setUser((prevUser) => ({...prevUser, homeAddress: response.data.homeAddress}));
             setOldHomeAddress(response.data.homeAddress);
@@ -104,7 +104,7 @@ const Home = ({
         const fetchHomeCoordinates = async () => {
             if (user && user.homeAddress) {
                 try {
-                    const coordinates = await getCoordinates(user.homeAddress, setIsLoading);
+                    const coordinates = await getCoordinates(user.homeAddress);
                     setError(null);
                     setHomeCoordinates([coordinates.lat, coordinates.lon]);
                 } catch (error) {
@@ -168,7 +168,6 @@ const Home = ({
                     setSelectedFacility={setSelectedFacility}
                     favouriteFacility={favouriteFacility}
                     setFavouriteFacility={setFavouriteFacility}
-                    setIsLoading={setIsLoading}
                 />
             </div>
         </div>);

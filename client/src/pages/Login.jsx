@@ -45,6 +45,7 @@ const Login = ({
             }
             navigate('/');
         } catch (error) {
+            setIsLoading(false);
             setError(error.response.data.message);
             console.error('Login Error:', error);
         }

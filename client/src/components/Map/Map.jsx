@@ -18,8 +18,7 @@ const Map = ({
                  selectedFacility,
                  setSelectedFacility,
                  favouriteFacility,
-                 setFavouriteFacility,
-                 setIsLoading
+                 setFavouriteFacility
              }) => {
     const [facilities, setFacilities] = useState([]);
     const [showRoute, setShowRoute] = useState(false);
@@ -116,7 +115,6 @@ const Map = ({
                     setShowDetails={setShowDetails}
                     handleRoute={handleRoute}
                     showRoute={showRoute}
-                    setIsLoading={setIsLoading}
                 />
             </Popup>
         </Marker>)}

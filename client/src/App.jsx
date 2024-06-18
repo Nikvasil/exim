@@ -43,7 +43,7 @@ function App() {
                 <Header
                     user={user}
                     onLogout={handleLogout}
-                    setIsLoading={setIsLoading()}
+                    setIsLoading={setIsLoading}
                 />
                 <main>
                     <div className="content">

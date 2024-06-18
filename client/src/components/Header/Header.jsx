@@ -93,6 +93,7 @@ const Header = ({
                                 anchorRef={anchorRef}
                                 setOpen={setOpen}
                                 onLogout={onLogout}
+                                setIsLoading={setIsLoading}
                             />
                         </div>)}
                 </div>

@@ -26,11 +26,13 @@ const HeaderMenu = ({
         if (confirmDelete) {
             try {
                 await setOpen(false);
-                await deleteUser(user, setIsLoading);
+                await deleteUser(user);
+                setIsLoading(false);
                 localStorage.removeItem('user');
                 onLogout();
                 navigate('/');
             } catch (error) {
+                setIsLoading(false);
                 console.error('Error deleting user:', error);
             }
         }
