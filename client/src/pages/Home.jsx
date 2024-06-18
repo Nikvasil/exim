@@ -15,8 +15,7 @@ const Home = ({
                   selectedFacility,
                   setSelectedFacility,
                   favouriteFacility,
-                  setFavouriteFacility,
-                  setIsLoading
+                  setFavouriteFacility
               }) => {
     const [message, setMessage] = useState('');
     const location = useLocation();
