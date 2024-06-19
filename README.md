@@ -69,7 +69,7 @@ VITE_GRAPH_HOPPER_API_KEY=your_graph_hopper_api_key
 ```
     origin: 'http://localhost:5173',
 ```
-6. Start the development server: `npm start`
+6. Start the development: `npm start`
 7. Open your browser and navigate to `http://localhost:5173` to view the application.
 
 ## Usage
