@@ -40,13 +40,15 @@ const ChangePassword = ({
         }
         try {
             const response = await changePassword(user, formData, setIsLoading);
+            setIsLoading(false);
             if (response.data.success) {
                 navigate('/?passwordChanged=true');
             } else {
                 setError(response.data.message || 'Password change failed. Please try again.');
             }
         } catch (error) {
-            setError('Password change failed. Please try again.');
+            setIsLoading(false);
+            setError('Current password is incorrect password.');
             console.error('Password Change Error:', error);
         }
     };

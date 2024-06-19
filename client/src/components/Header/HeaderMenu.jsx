@@ -26,7 +26,7 @@ const HeaderMenu = ({
         if (confirmDelete) {
             try {
                 await setOpen(false);
-                await deleteUser(user);
+                await deleteUser(user, setIsLoading);
                 setIsLoading(false);
                 localStorage.removeItem('user');
                 onLogout();
