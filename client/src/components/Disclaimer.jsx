@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
 import '../styles/Disclaimer.css';
 
 const Disclaimer = () => {
-    const [visible, setVisible] = useState(true);
+    const [showBanner, setShowBanner] = useState(false);
 
-    if (!visible) return null;
+    useEffect(() => {
+        const hasDismissed = localStorage.getItem('disclaimerDismissed');
+        if (!hasDismissed) {
+            setShowBanner(true);
+        }
+    }, []);
+
+    const handleClose = () => {
+        localStorage.setItem('disclaimerDismissed', 'true');
+        setShowBanner(false);
+    };
+
+    if (!showBanner) return null;
 
     return (
         <div className="disclaimer-banner">
@@ -12,7 +24,10 @@ const Disclaimer = () => {
         The web service was deployed on a free instance that spins down with inactivity,
         which can delay requests by 50 seconds or more.
       </span>
-            <button className="close-btn" onClick={() => setVisible(false)} title="Close">
+            <button
+                className="close-btn"
+                onClick={handleClose}
+                title="Close">
                 ✖
             </button>
         </div>
