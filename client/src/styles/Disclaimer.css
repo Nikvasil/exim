@@ -1,0 +1,28 @@
+.disclaimer-banner {
+    position: fixed;
+    top: 4vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #3D3D3D;
+    color: white;
+    border: 0.15vh solid #888888;
+    border-radius: 0.6vh;
+    padding: 1.2vh 2vw;
+    max-width: 80vw;
+    font-size: 2.2vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0.3vh 0.8vh rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2vh;
+    cursor: pointer;
+    margin-left: 2vw;
+    color: white;
+}
+

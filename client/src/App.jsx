@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import ChangePassword from './pages/ChangePassword.jsx';
 import CircularProgress from '@mui/material/CircularProgress';
+import Disclaimer from "./components/Disclaimer";
 
 
 function App() {
@@ -38,7 +39,10 @@ function App() {
         localStorage.removeItem('user');
     };
 
-    return (<Router>
+    return (
+        <>
+        <Router>
+            <Disclaimer />
             <div className="App">
                 <Header
                     user={user}
@@ -89,7 +93,9 @@ function App() {
                 </main>
                 <Footer/>
             </div>
-        </Router>);
+        </Router>
+    </>
+    );
 }
 
 
